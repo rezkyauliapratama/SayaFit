@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "333043714737",
+    "firebase_url": "https://sayafit-36773.firebaseio.com",
+    "project_id": "sayafit-36773",
+    "storage_bucket": "sayafit-36773.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333043714737:android:e020aa2a4b987e92",
+        "android_client_info": {
+          "package_name": "android.cybereye_community.com.sayafit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333043714737-mf7nul5vheerehi7eokcmpiif6tbva22.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "android.cybereye_community.com.sayafit",
+            "certificate_hash": "dc7d8c3ca53d32b0143eba877988c14a6dcb851d"
+          }
+        },
+        {
+          "client_id": "333043714737-8haj6krqcma36sk27rp70thjl26t7gmk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-HakVMfJ53N7FDFsWO_hhsDUK1Wf3EmU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333043714737-8haj6krqcma36sk27rp70thjl26t7gmk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
