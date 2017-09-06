@@ -62,13 +62,8 @@ public class HomeFragment extends BaseFragment {
 
     int mPage;
 
-
-
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
-        /*Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, category);
-        fragment.setArguments(args);*/
         return fragment;
     }
 
@@ -76,12 +71,6 @@ public class HomeFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         feeds = new ArrayList<>();
-
-
-        /*if (getArguments() != null){
-            mCategory = getArguments().getString(EXTRA1);
-            movies = new ArrayList<>();
-        }*/
 
         setRetainInstance(true);
     }
