@@ -7,6 +7,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.cybereye_community.com.sayafit.R;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.TrafficStats;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
@@ -14,10 +16,18 @@ import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.securepreferences.SecurePreferences;
 
 import org.jetbrains.annotations.Contract;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
+import timber.log.Timber;
 
 /**
  * Created by Shiburagi on 09/07/2016.
@@ -116,6 +126,38 @@ public class Utils {
 // finally change the color
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(ContextCompat.getColor(context, R.color.colorPrimaryTransparent));
+        }
+    }
+
+    public String setLocation(Context context,LatLng latLng) throws IOException {
+
+
+        Timber.e("KOORDINAT : "+new Gson().toJson(latLng));
+
+        Geocoder geocoder;
+        List<Address> addresses;
+        try {
+            geocoder = new Geocoder(context, Locale.getDefault());
+
+
+            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            Timber.e("ADDRESS : "+new Gson().toJson(addresses));
+            Timber.e("ADDRESS Lenght : "+addresses.size());
+            if (addresses.size() == 0)
+                return "";
+
+            Address address = addresses.get(0);
+            Timber.e("address.getMaxAddressLineIndex() : "+address.getMaxAddressLineIndex());
+
+            String addressString = "";
+            for (int i = 0; i <= address.getMaxAddressLineIndex(); i++) {
+                addressString += "\n" + address.getAddressLine(i);
+            }
+            addressString = addressString.substring(1);
+            return addressString;
+        } catch (Exception e) {
+            Timber.e("ERROR MAP : "+e.getMessage());
+            return "";
         }
     }
 
