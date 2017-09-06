@@ -26,6 +26,11 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateVisible|adjustResize|stateAlwaysHidden" />
 
+        <activity
+            android:name=".controller.activity.PostActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize|stateAlwaysHidden" />
+
         <meta-data
             android:name="com.google.android.awareness.API_KEY"
             android:value="@string/AWARENESS_API_KEY"/>
@@ -39,7 +44,7 @@
             android:name="com.google.android.nearby.messages.API_KEY"
             android:value="@string/AWARENESS_API_KEY" />
 
-    </application>
+ </application>
 
 
 </manifest>

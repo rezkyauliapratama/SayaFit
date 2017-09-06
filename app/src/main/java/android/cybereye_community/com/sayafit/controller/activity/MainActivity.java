@@ -1,5 +1,6 @@
 package android.cybereye_community.com.sayafit.controller.activity;
 
+import android.content.Intent;
 import android.cybereye_community.com.sayafit.EventBus;
 import android.cybereye_community.com.sayafit.R;
 import android.cybereye_community.com.sayafit.controller.fragment.BaseFragment;
@@ -101,7 +102,7 @@ public class MainActivity extends BaseActivity
             @Override
             public void onMenuItemClick(FloatingActionButton miniFab, @Nullable TextView label, int itemId) {
                 if (label.getText().equals(Constant.getInstance().POST))
-                showDialogFeed();
+                startActivity(new Intent(MainActivity.this,PostActivity.class));
 
             }
         });

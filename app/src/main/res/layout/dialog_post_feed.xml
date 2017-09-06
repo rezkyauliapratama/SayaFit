@@ -26,13 +26,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
-                   <com.app.infideap.stylishwidget.view.ATextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="Post to SayaFit"
-                       android:textColor="@color/secondaryTextColor"
-                       android:textAppearance="@dimen/text_large"
-                       android:textStyle="bold"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_logo_sayafit_medium"
+                        android:adjustViewBounds="true"
+                        android:scaleType="center"
+                        android:paddingTop="@dimen/margin_normal"
+                        />
                 </LinearLayout>
             </android.cybereye_community.com.sayafit.view.AToolbar>
 
@@ -97,7 +98,15 @@
                         android:id="@+id/iv_feed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_small"/>
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:visibility="gone"/>
+                    <com.app.infideap.stylishwidget.view.ATextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryTextColor"
+                        android:text="Status"
+                        android:padding="@dimen/margin_small"
+                        android:textAppearance="@style/TextStyle.Small"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -106,7 +115,7 @@
                             android:id="@+id/et_feed"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            style="@style/EditText.RoundBorder.Transparent"
+                            style="@style/EditText.RoundBorder"
                             android:gravity="top"
                             android:textColor="@color/secondaryTextColor"
                             android:minLines="5"/>

@@ -65,7 +65,7 @@ public class FeedDialogFragment extends DialogFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.btnPost.setOnClickListener(new View.OnClickListener() {
+        /*binding.btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str_feed = binding.etFeed.getText().toString();
@@ -82,7 +82,7 @@ public class FeedDialogFragment extends DialogFragment {
                 }
 
             }
-        });
+        });*/
     }
 
 
