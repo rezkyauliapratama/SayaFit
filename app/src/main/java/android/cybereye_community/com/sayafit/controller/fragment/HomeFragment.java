@@ -1,21 +1,38 @@
 package android.cybereye_community.com.sayafit.controller.fragment;
 
+import android.content.ContentValues;
+import android.cybereye_community.com.sayafit.EventBus;
 import android.cybereye_community.com.sayafit.R;
+import android.cybereye_community.com.sayafit.controller.adapter.FeedRecyclerviewAdapter;
+import android.cybereye_community.com.sayafit.controller.database.Facade;
+import android.cybereye_community.com.sayafit.controller.database.entity.FeedTbl;
 import android.cybereye_community.com.sayafit.databinding.FragmentHomeBinding;
 import android.cybereye_community.com.sayafit.databinding.LayoutEmptyBinding;
+import android.cybereye_community.com.sayafit.handler.ApiClient;
+import android.cybereye_community.com.sayafit.handler.api.FeedApi;
+import android.cybereye_community.com.sayafit.handler.listener.OnLoadMoreListener;
 import android.cybereye_community.com.sayafit.view.LayoutEmptyInflate;
+import android.database.Cursor;
 import android.databinding.DataBindingUtil;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.ParsedRequestListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import rx.Observer;
 import timber.log.Timber;
 
 /**
@@ -25,8 +42,9 @@ import timber.log.Timber;
 public class HomeFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static final String EXTRA1 = "EXTRA1";
+    public static final String EXTRA2 = "EXTRA2";
+    public static final String EXTRA3 = "EXTRA3";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -38,6 +56,12 @@ public class HomeFragment extends BaseFragment {
 
     public final static String LIST_STATE_KEY = "recycler_list_state";
     Parcelable listState;
+    FeedRecyclerviewAdapter adapter;
+    List<FeedTbl> feeds;
+    LinearLayoutManager mLayoutManager;
+
+    int mPage;
+
 
 
     public static HomeFragment newInstance() {
@@ -66,27 +90,138 @@ public class HomeFragment extends BaseFragment {
 
         if(savedInstanceState != null){
             Timber.e("SAVEDINSTACESTATE");
-            /*mCategory = savedInstanceState.getString(EXTRA1);
-            movies = savedInstanceState.getParcelableArrayList(EXTRA2);
+            feeds = savedInstanceState.getParcelableArrayList(EXTRA1);
             listState = savedInstanceState.getParcelable(LIST_STATE_KEY);
-            mPage = savedInstanceState.getInt(EXTRA3);*/
+            mPage = savedInstanceState.getInt(EXTRA2);
         }
         new LayoutEmptyInflate(getContext(),binding.containerHome);
 
         return binding.getRoot();
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        mLayoutManager = new LinearLayoutManager(getContext());
+        binding.recyclerView.setLayoutManager(mLayoutManager);
+        adapter = new FeedRecyclerviewAdapter(getContext(),feeds);
+        binding.recyclerView.setAdapter(adapter);
+
+        EventBus.instanceOf().getObservable().subscribe(new Observer<FeedTbl>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(FeedTbl feedTbl) {
+                feeds.add(0,feedTbl);
+                binding.recyclerView.getAdapter().notifyDataSetChanged();
+            }
+
+
+
+        });
+
+
+        adapter.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                Timber.e("NEXT PAGE");
+                mPage++;
+//                loadData();
+            }
+        });
+
+    }
+
+    private void loadData(){
+        if (binding.swipeRefreshLayout != null) {
+            binding.swipeRefreshLayout.setRefreshing(true);
+        }
+
+            ApiClient.getInstance().feed().get(mPage)
+                    .getAsObject(FeedTbl.class, new ParsedRequestListener<FeedTbl>() {
+                        @Override
+                        public void onResponse(FeedTbl response) {
+//                            new DownloadTask().execute(response);
+                        }
+
+                        @Override
+                        public void onError(ANError anError) {
+                            Timber.e("ERROR :".concat(anError.getMessage()));
+                            mPage--;
+                            if (binding.swipeRefreshLayout != null) {
+                                binding.swipeRefreshLayout.setRefreshing(false);
+                            }
+                        }
+                    });
+    }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        /*listState = mLayoutManager.onSaveInstanceState();
-        outState.putParcelable(LIST_STATE_KEY, listState);*/
+        listState = mLayoutManager.onSaveInstanceState();
+        outState.putParcelable(LIST_STATE_KEY, listState);
 
-        /*outState.putString(EXTRA1, mCategory);
-        outState.putParcelableArrayList(EXTRA2, new ArrayList<MovieAbstract>(movies));
-        outState.putInt(EXTRA3, mPage);*/
+        outState.putParcelableArrayList(EXTRA1, new ArrayList<FeedTbl>(feeds));
+        outState.putInt(EXTRA2, mPage);
         super.onSaveInstanceState(outState);
     }
 
+
+    private class DownloadTask extends AsyncTask<List<FeedTbl>, Void, Void> {
+
+        @Override
+        protected Void doInBackground(List<FeedTbl>... params) {
+            if (params[0] != null){
+                if (params[0].size() > 0){
+                    if (mPage == 1) {
+                        feeds.clear();
+                    }
+                    int i=0;
+                    for (FeedTbl feed : params[0]){
+                        long id = Facade.getInstance().getManageFeedTbl().add(feed);
+                        if (id>0){
+                            feeds.add(feed);
+                            i++;
+                        }
+                    }
+
+
+                    if (i>0){
+                        Timber.e("SIZE MOVIES  : "+i);
+                    }
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Timber.e("onPreExecute");
+            if (binding.swipeRefreshLayout != null) {
+                binding.swipeRefreshLayout.setRefreshing(true);
+            }
+        }
+
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            adapter.notifyDataSetChanged();
+            adapter.setLoaded();
+            if (binding.swipeRefreshLayout != null) {
+                binding.swipeRefreshLayout.setRefreshing(false);
+            }
+        }
+    }
 
 }

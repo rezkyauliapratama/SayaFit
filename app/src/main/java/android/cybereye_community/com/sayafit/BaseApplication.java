@@ -43,7 +43,7 @@ public class BaseApplication extends Application {
 
         //init database
         String databaseName = "Sayafit";
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this,databaseName); //The users-db here is the name of our database.
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, databaseName);
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
         Facade.init(daoSession);

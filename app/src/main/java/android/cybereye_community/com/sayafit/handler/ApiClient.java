@@ -43,9 +43,6 @@ public class ApiClient {
     }
     //b77a9c9af1b4434dcbbacdde72879e7c
 
-    public final String BASE_URL = "http://sayafit.cybereye-community.com/";
-
-
     //api list
     private final UserApi user;
     public UserApi user() {

@@ -3,6 +3,7 @@ package android.cybereye_community.com.sayafit.handler.api;
 import android.cybereye_community.com.sayafit.controller.database.entity.UserTbl;
 import android.cybereye_community.com.sayafit.handler.ApiClient;
 import android.cybereye_community.com.sayafit.model.response.ApiResponse;
+import android.cybereye_community.com.sayafit.utility.Constant;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.ANRequest;
@@ -17,7 +18,7 @@ import timber.log.Timber;
 
 public class UserApi {
     private final ApiClient api;
-    final static String path = ApiClient.getInstance().BASE_URL.concat("register_google_sign_in_api.php");
+    final String path = Constant.getInstance().BASE_URL.concat("register_google_sign_in_api.php");
 
     public UserApi(ApiClient api) {
         this.api = api;

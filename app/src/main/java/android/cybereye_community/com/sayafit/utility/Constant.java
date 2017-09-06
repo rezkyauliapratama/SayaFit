@@ -31,4 +31,6 @@ public class Constant {
     public final String SHARE_LOCATION = "Share location";
     public final String ADD_SCHEDULE = "Add schedule";
 
+    public final String BASE_URL = "http://sayafit.cybereye-community.com/";
+
 }

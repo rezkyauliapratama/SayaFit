@@ -1,20 +1,26 @@
 package android.cybereye_community.com.sayafit.controller.database.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Property;
+
+import java.io.Serializable;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by Rezky Aulia Pratama on 9/6/2017.
  */
-@Entity(nameInDb = "FeedTbl ",indexes = {
-        @Index(value = "id_feed", unique = true)
-})
-public class FeedTbl {
+@Entity(nameInDb = "FeedTbl ")
+public class FeedTbl implements Parcelable {
     private static final long serialVersionUID=1L;
-    @Property(nameInDb = "id_feed")
-    public long id_feed;
+    @Id
+    @Property(nameInDb = "FeedID")
+    public Long FeedID;
+
     @Property(nameInDb = "feed")
     public String feed;
     @Property(nameInDb = "image")
@@ -27,10 +33,10 @@ public class FeedTbl {
     public String status;
     @Property(nameInDb = "preview")
     public String preview;
-@Generated(hash = 918876497)
-public FeedTbl(long id_feed, String feed, String image, String date,
+@Generated(hash = 508568245)
+public FeedTbl(Long FeedID, String feed, String image, String date,
         String email, String status, String preview) {
-    this.id_feed = id_feed;
+    this.FeedID = FeedID;
     this.feed = feed;
     this.image = image;
     this.date = date;
@@ -41,11 +47,11 @@ public FeedTbl(long id_feed, String feed, String image, String date,
 @Generated(hash = 1830382152)
 public FeedTbl() {
 }
-public long getId_feed() {
-    return this.id_feed;
+public Long getFeedID() {
+    return this.FeedID;
 }
-public void setId_feed(long id_feed) {
-    this.id_feed = id_feed;
+public void setFeedID(Long FeedID) {
+    this.FeedID = FeedID;
 }
 public String getFeed() {
     return this.feed;
@@ -85,4 +91,41 @@ public void setPreview(String preview) {
 }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.FeedID);
+        dest.writeString(this.feed);
+        dest.writeString(this.image);
+        dest.writeString(this.date);
+        dest.writeString(this.email);
+        dest.writeString(this.status);
+        dest.writeString(this.preview);
+    }
+
+    protected FeedTbl(Parcel in) {
+        this.FeedID = (Long) in.readValue(Long.class.getClassLoader());
+        this.feed = in.readString();
+        this.image = in.readString();
+        this.date = in.readString();
+        this.email = in.readString();
+        this.status = in.readString();
+        this.preview = in.readString();
+    }
+
+    public static final Creator<FeedTbl> CREATOR = new Creator<FeedTbl>() {
+        @Override
+        public FeedTbl createFromParcel(Parcel source) {
+            return new FeedTbl(source);
+        }
+
+        @Override
+        public FeedTbl[] newArray(int size) {
+            return new FeedTbl[size];
+        }
+    };
 }

@@ -93,13 +93,13 @@ public class LoginActivity extends BaseActivity implements
             layoutEmpty.setVisibility(View.VISIBLE);
 
             GoogleSignInAccount acct = result.getSignInAccount();
-            Timber.e("RESULT : "+new Gson().toJson(acct));
             final UserTbl userTbl = new UserTbl();
             userTbl.email = acct.getEmail();
             userTbl.city = "";
             userTbl.gender = "";
             userTbl.nama= acct.getDisplayName();
             userTbl.token= acct.getIdToken();
+            Timber.e("REQ : "+new Gson().toJson(userTbl));
 
             ApiClient.getInstance().user().post(userTbl).
                     getAsObject(UserApi.Response.class, new ParsedRequestListener<UserApi.Response>() {
@@ -144,8 +144,9 @@ public class LoginActivity extends BaseActivity implements
 
         if (userTbl != null){
             startActivity(new Intent(this,MainActivity.class));
+            finish();
         }
-        finish();
+
     }
 
 }

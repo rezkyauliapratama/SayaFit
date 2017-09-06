@@ -1,5 +1,6 @@
 package android.cybereye_community.com.sayafit.controller.activity;
 
+import android.cybereye_community.com.sayafit.EventBus;
 import android.cybereye_community.com.sayafit.R;
 import android.cybereye_community.com.sayafit.controller.fragment.BaseFragment;
 import android.cybereye_community.com.sayafit.controller.fragment.FeedDialogFragment;

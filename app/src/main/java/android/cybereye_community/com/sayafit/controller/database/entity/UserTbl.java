@@ -1,6 +1,7 @@
 package android.cybereye_community.com.sayafit.controller.database.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
@@ -14,6 +15,7 @@ import org.greenrobot.greendao.annotation.Generated;
 })
 public class UserTbl {
     private static final long serialVersionUID=1L;
+    @Id
     @Property(nameInDb = "email")
     public String email;
     @Property(nameInDb = "nama")

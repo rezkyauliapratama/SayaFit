@@ -10,12 +10,12 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 
 @Entity(nameInDb = "ScheduleTbl",indexes = {
-        @Index(value = "id", unique = true)
+        @Index(value = "IdSchedule", unique = true)
 })
 public class ScheduleTbl {
     private static final long serialVersionUID=1L;
-    @Property(nameInDb = "id")
-    public String id;
+    @Property(nameInDb = "IdSchedule")
+    public Long IdSchedule;
     @Property(nameInDb = "email")
     public String email;
     @Property(nameInDb = "date")
@@ -26,10 +26,10 @@ public class ScheduleTbl {
     public String end;
     @Property(nameInDb = "activity")
     public String activity;
-@Generated(hash = 249424471)
-public ScheduleTbl(String id, String email, String date, String start,
+@Generated(hash = 703300063)
+public ScheduleTbl(Long IdSchedule, String email, String date, String start,
         String end, String activity) {
-    this.id = id;
+    this.IdSchedule = IdSchedule;
     this.email = email;
     this.date = date;
     this.start = start;
@@ -39,11 +39,11 @@ public ScheduleTbl(String id, String email, String date, String start,
 @Generated(hash = 1596512676)
 public ScheduleTbl() {
 }
-public String getId() {
-    return this.id;
+public Long getIdSchedule() {
+    return this.IdSchedule;
 }
-public void setId(String id) {
-    this.id = id;
+public void setIdSchedule(Long IdSchedule) {
+    this.IdSchedule = IdSchedule;
 }
 public String getEmail() {
     return this.email;
@@ -75,5 +75,4 @@ public String getActivity() {
 public void setActivity(String activity) {
     this.activity = activity;
 }
-
 }

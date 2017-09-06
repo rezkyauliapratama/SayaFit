@@ -1,12 +1,17 @@
 package android.cybereye_community.com.sayafit.handler.api;
 
+import android.cybereye_community.com.sayafit.controller.database.entity.FeedTbl;
 import android.cybereye_community.com.sayafit.handler.ApiClient;
 import android.cybereye_community.com.sayafit.model.request.FeedPost;
 import android.cybereye_community.com.sayafit.model.response.ApiResponse;
+import android.cybereye_community.com.sayafit.utility.Constant;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.ANRequest;
 import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.DownloadProgressListener;
+import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.google.gson.Gson;
 
 import timber.log.Timber;
@@ -17,8 +22,9 @@ import timber.log.Timber;
 
 public class FeedApi {
     private final ApiClient api;
-    final static String path = ApiClient.getInstance().BASE_URL.concat("feed/");
-    final static String postPath = path.concat("post_feed_item_v29876.php");
+    final  String path = Constant.getInstance().BASE_URL.concat("feed/");
+    final  String postPath = path.concat("post_feed_item_v29876.php");
+    final String getPath = path.concat("feed_item_v289967.php");
 
     public FeedApi(ApiClient api) {
         this.api = api;
@@ -30,6 +36,15 @@ public class FeedApi {
         return AndroidNetworking.post(postPath)
                 .addApplicationJsonBody(feed) // posting java object
                 .setTag("test")
+                .setPriority(Priority.HIGH)
+                .build();
+    }
+
+
+    public ANRequest get(final int page){
+        Timber.e("PATH : "+getPath+"/"+page);
+        Timber.e("Page : "+page);
+        return AndroidNetworking.get(getPath+"/"+page)
                 .setPriority(Priority.HIGH)
                 .build();
     }

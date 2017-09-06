@@ -21,18 +21,26 @@ public class Facade {
     }
 
     private ManageUserTbl manageUserTbl;
+    private ManageFeedTbl manageFeedTbl;
+    private ManageScheduleTbl manageScheduleTbl;
 
 
     Facade(DaoSession daoSession) {
         this.session = daoSession;
-
         manageUserTbl = new ManageUserTbl(this);
-
-
+        manageFeedTbl = new ManageFeedTbl(this);
+        manageScheduleTbl = new ManageScheduleTbl(this);
     }
 
     public ManageUserTbl getManageUserTbl() {
         return manageUserTbl;
+    }
+
+    public ManageFeedTbl getManageFeedTbl() {
+        return manageFeedTbl;
+    }
+    public ManageScheduleTbl getManageScheduleTbl() {
+        return manageScheduleTbl;
     }
 
 }
