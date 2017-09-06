@@ -15,8 +15,8 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by Rezky Aulia Pratama on 9/6/2017.
  */
 @Entity(nameInDb = "FeedTbl ")
-public class FeedTbl implements Parcelable{
     private static final long serialVersionUID=1L;
+public class FeedTbl implements Parcelable{
     @Id
     @Property(nameInDb = "FeedID")
     public Long FeedID;

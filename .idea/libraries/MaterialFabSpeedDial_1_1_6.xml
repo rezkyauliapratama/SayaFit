@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="MaterialFabSpeedDial-1.1.6">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/e9c5c4ca0d52eff8092bb911da7027bc327861a0/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/e9c5c4ca0d52eff8092bb911da7027bc327861a0/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.kobakei/MaterialFabSpeedDial/1.1.6/816103a351786736fa0d875bb382f059c15f4039/MaterialFabSpeedDial-1.1.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
