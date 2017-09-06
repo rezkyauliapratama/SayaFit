@@ -2,15 +2,21 @@ package android.cybereye_community.com.sayafit.controller.activity;
 
 import android.cybereye_community.com.sayafit.R;
 import android.cybereye_community.com.sayafit.controller.fragment.BaseFragment;
+import android.cybereye_community.com.sayafit.controller.fragment.FeedDialogFragment;
 import android.cybereye_community.com.sayafit.controller.fragment.HomeFragment;
 import android.cybereye_community.com.sayafit.controller.fragment.ScheduleFragment;
 import android.cybereye_community.com.sayafit.controller.fragment.ShareLocationFragment;
 import android.cybereye_community.com.sayafit.databinding.ActivityMainBinding;
+import android.cybereye_community.com.sayafit.handler.ApiClient;
+import android.cybereye_community.com.sayafit.handler.api.FeedApi;
+import android.cybereye_community.com.sayafit.model.request.FeedPost;
+import android.cybereye_community.com.sayafit.utility.Constant;
 import android.databinding.DataBindingUtil;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -23,6 +29,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.ParsedRequestListener;
+import com.androidnetworking.interfaces.StringRequestListener;
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,13 +45,17 @@ import timber.log.Timber;
  * Created by Rezky Aulia Pratama on 9/3/2017.
  */
 
-public class MainActivity extends BaseActivity{
+public class MainActivity extends BaseActivity
+    implements FeedDialogFragment.onFragmentInteraction{
 
     ActivityMainBinding binding;
 
     List<BaseFragment> fragments;
     BaseFragment fragment;
     FabSpeedDialMenu menu;
+
+    FeedDialogFragment feedDialogFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +79,10 @@ public class MainActivity extends BaseActivity{
         menu = new FabSpeedDialMenu(this);
 
         if (fragment instanceof HomeFragment || fragment instanceof ShareLocationFragment){
-            menu.add("Post").setIcon(R.drawable.ic_create_24dp);
-            menu.add("Share location").setIcon(R.drawable.ic_favorite_place);
+            menu.add(Constant.getInstance().POST).setIcon(R.drawable.ic_create_24dp);
+            menu.add(Constant.getInstance().SHARE_LOCATION).setIcon(R.drawable.ic_favorite_place);
         }else if (fragment instanceof ScheduleFragment){
-            menu.add("Add schedule").setIcon(R.drawable.ic_create_24dp);
+            menu.add(Constant.getInstance().ADD_SCHEDULE).setIcon(R.drawable.ic_create_24dp);
         }
 
         if (menu.size() > 0)
@@ -84,7 +99,9 @@ public class MainActivity extends BaseActivity{
         binding.content.fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
             @Override
             public void onMenuItemClick(FloatingActionButton miniFab, @Nullable TextView label, int itemId) {
-                Toast.makeText(MainActivity.this,"ON Click : "+label.getText().toString(),Toast.LENGTH_LONG).show();
+                if (label.getText().equals(Constant.getInstance().POST))
+                showDialogFeed();
+
             }
         });
     }
@@ -162,4 +179,30 @@ public class MainActivity extends BaseActivity{
     }
 
 
+    private void showDialogFeed(){
+        feedDialogFragment = FeedDialogFragment.newInstance();
+        feedDialogFragment.show(getFragmentManager().beginTransaction(),feedDialogFragment.DiALOG);
+
+    }
+
+    @Override
+    public void onPostFeedInteraction(FeedPost feed) {
+        ApiClient.getInstance().feed().post(feed)
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Timber.e("FEED :"+response);
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void onAlertInteraction(String str) {
+        Snackbar.make(binding.messageBoxLog,str,Snackbar.LENGTH_LONG).show();
+    }
 }

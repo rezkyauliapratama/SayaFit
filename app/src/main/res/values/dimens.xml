@@ -62,5 +62,6 @@
 
     <dimen name="btn_width">60dp</dimen>
     <dimen name="btn_height">45dp</dimen>
+    <dimen name="dialog_width">1000dp</dimen>
 
 </resources>

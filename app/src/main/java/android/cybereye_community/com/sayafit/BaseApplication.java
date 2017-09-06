@@ -1,9 +1,14 @@
 package android.cybereye_community.com.sayafit;
 
 import android.app.Application;
+import android.cybereye_community.com.sayafit.controller.database.Facade;
+import android.cybereye_community.com.sayafit.controller.database.entity.DaoMaster;
+import android.cybereye_community.com.sayafit.controller.database.entity.DaoSession;
 import android.cybereye_community.com.sayafit.utility.PreferencesManager;
 
 import com.app.infideap.stylishwidget.view.Stylish;
+
+import org.greenrobot.greendao.database.Database;
 
 import timber.log.Timber;
 
@@ -12,6 +17,7 @@ import timber.log.Timber;
  */
 
 public class BaseApplication extends Application {
+    private DaoSession daoSession;
 
     @Override
     public void onCreate() {
@@ -34,6 +40,13 @@ public class BaseApplication extends Application {
         );
 
         Timber.e(Stylish.getInstance().getFontScale()+"");
+
+        //init database
+        String databaseName = "Sayafit";
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this,databaseName); //The users-db here is the name of our database.
+        Database db = helper.getWritableDb();
+        daoSession = new DaoMaster(db).newSession();
+        Facade.init(daoSession);
 
 
     }

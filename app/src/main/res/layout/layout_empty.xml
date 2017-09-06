@@ -9,12 +9,13 @@
         >
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie"
             android:layout_width="@dimen/size_width_redeem_logo"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="animation/empty_status.json"
+            app:lottie_fileName="animation/trail_loading.json"
             app:lottie_loop="true" />
 
     </FrameLayout>

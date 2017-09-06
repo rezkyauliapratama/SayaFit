@@ -2,12 +2,21 @@ package android.cybereye_community.com.sayafit.controller.activity;
 
 import android.content.Intent;
 import android.cybereye_community.com.sayafit.R;
+import android.cybereye_community.com.sayafit.controller.database.Facade;
+import android.cybereye_community.com.sayafit.controller.database.entity.UserTbl;
 import android.cybereye_community.com.sayafit.databinding.ActivityLoginBinding;
+import android.cybereye_community.com.sayafit.databinding.LayoutEmptyBinding;
+import android.cybereye_community.com.sayafit.handler.ApiClient;
+import android.cybereye_community.com.sayafit.handler.api.UserApi;
+import android.cybereye_community.com.sayafit.view.LayoutEmptyInflate;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -25,7 +34,7 @@ public class LoginActivity extends BaseActivity implements
         GoogleApiClient.OnConnectionFailedListener {
 
     private static final int RC_SIGN_IN = 007;
-
+    LayoutEmptyInflate layoutEmpty;
     ActivityLoginBinding binding;
     private GoogleApiClient mGoogleApiClient;
     @Override
@@ -33,6 +42,9 @@ public class LoginActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+
+        layoutEmpty = new LayoutEmptyInflate(this,binding.containerBody);
+        layoutEmpty.setVisibility(View.GONE);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -53,6 +65,8 @@ public class LoginActivity extends BaseActivity implements
                 signIn();
             }
         });
+
+        redirect();
     }
 
     @Override
@@ -75,18 +89,37 @@ public class LoginActivity extends BaseActivity implements
         Timber.e("handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
+
+            layoutEmpty.setVisibility(View.VISIBLE);
+
             GoogleSignInAccount acct = result.getSignInAccount();
-
             Timber.e("RESULT : "+new Gson().toJson(acct));
-        /*    Timber.e("display name: " + acct.getDisplayName());
+            final UserTbl userTbl = new UserTbl();
+            userTbl.email = acct.getEmail();
+            userTbl.city = "";
+            userTbl.gender = "";
+            userTbl.nama= acct.getDisplayName();
+            userTbl.token= acct.getIdToken();
 
-            String personName = acct.getDisplayName();
-            String personPhotoUrl = acct.getPhotoUrl().toString();
-            String email = acct.getEmail();
+            ApiClient.getInstance().user().post(userTbl).
+                    getAsObject(UserApi.Response.class, new ParsedRequestListener<UserApi.Response>() {
+                @Override
+                public void onResponse(UserApi.Response response) {
+                    Timber.e("RESULT : "+new Gson().toJson(response));
+                    layoutEmpty.setVisibility(View.GONE);
+                    if (response.value == 0 || response.value == 1){
+                        Facade.getInstance().getManageUserTbl().add(userTbl);
+                    }
+                    redirect();
+                }
 
-            Timber.e("PersonName : " + personName + " | email : " + email);*/
+                @Override
+                public void onError(ANError anError) {
+                    layoutEmpty.setVisibility(View.GONE);
+                    Snackbar.make(binding.containerBody,anError.getMessage(),Snackbar.LENGTH_LONG).show();
+                }
+            });
 
-        startActivity(new Intent(this,MainActivity.class));
         }
     }
 
@@ -106,5 +139,13 @@ public class LoginActivity extends BaseActivity implements
                 });
     }
 
+    private void redirect(){
+        UserTbl userTbl = Facade.getInstance().getManageUserTbl().get();
+
+        if (userTbl != null){
+            startActivity(new Intent(this,MainActivity.class));
+        }
+        finish();
+    }
 
 }

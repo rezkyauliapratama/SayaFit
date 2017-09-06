@@ -26,4 +26,9 @@ public class Constant {
 
     public final int PERMISSION_REQUEST = 10000;
 
+    //FAB
+    public final String POST = "Post";
+    public final String SHARE_LOCATION = "Share location";
+    public final String ADD_SCHEDULE = "Add schedule";
+
 }

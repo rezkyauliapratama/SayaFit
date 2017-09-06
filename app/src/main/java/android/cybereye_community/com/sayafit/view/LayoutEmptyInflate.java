@@ -4,9 +4,13 @@ import android.content.Context;
 import android.cybereye_community.com.sayafit.R;
 import android.cybereye_community.com.sayafit.databinding.LayoutEmptyBinding;
 import android.databinding.DataBindingUtil;
+import android.util.JsonReader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.json.JSONObject;
+
 import timber.log.Timber;
 
 /**
@@ -29,6 +33,9 @@ public class LayoutEmptyInflate {
         setVisibility(View.VISIBLE);
     }
 
+    public void setAnimation(JSONObject object){
+        binding.lottie.setAnimation(object);
+    }
     public void setVisibility(int visible){
         binding.containerEmpty.setVisibility(visible);
     }
