@@ -75,6 +75,9 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        feeds = new ArrayList<>();
+
+
         /*if (getArguments() != null){
             mCategory = getArguments().getString(EXTRA1);
             movies = new ArrayList<>();
