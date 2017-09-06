@@ -17,6 +17,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * Created by Rezky Aulia Pratama on 9/6/2017.
  */
@@ -56,6 +58,14 @@ public class FeedRecyclerviewAdapter extends BaseAdapter{
         holder.binding.tvName.setText(user.getNama());
         holder.binding.tvTime.setText(item.getDate());
         holder.binding.tvContent.setText(item.getFeed());
+
+        Timber.e("image : " + item.image);
+        if (!item.getImage().isEmpty()){
+            holder.binding.ivFeed.setVisibility(View.VISIBLE);
+            Picasso.with(mContext)
+                    .load(item.image)
+                    .into(holder.binding.ivFeed);
+        }
     }
 
 

@@ -57,7 +57,11 @@ public class BaseActivity extends AppCompatActivity {
 
     public void checkAppPermission() {
         final List<String> permissions = new ArrayList<>();
-        boolean showMessage = location(permissions);
+        boolean showMessage = location(permissions)
+                || camera(permissions)
+                ||writeExternalStorage(permissions)
+                ||writeSetting(permissions);
+
 
 
 
@@ -106,7 +110,63 @@ public class BaseActivity extends AppCompatActivity {
         return false;
     }
 
+    private boolean writeExternalStorage(List<String> permissions) {
+        if (ActivityCompat.checkSelfPermission(
+                getApplication(), Manifest
+                        .permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
 
+            // Should we show an explanation?
+            permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                return true;
+
+            }
+
+        }
+        return false;
+    }
+
+
+    private boolean camera(List<String> permissions) {
+        if (ActivityCompat.checkSelfPermission(
+                getApplication(), Manifest
+                        .permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            permissions.add(Manifest.permission.CAMERA);
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.CAMERA)) {
+                return true;
+
+            }
+
+        }
+        return false;
+    }
+
+    private boolean writeSetting(List<String> permissions) {
+        if (ActivityCompat.checkSelfPermission(
+                getApplication(), Manifest
+                        .permission.WRITE_SETTINGS)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            permissions.add(Manifest.permission.WRITE_SETTINGS);
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_SETTINGS)) {
+                return true;
+
+            }
+
+        }
+        return false;
+    }
     public void addFragment(int id, Fragment fragment) {
         getSupportFragmentManager().beginTransaction().add(id, fragment).commit();
 

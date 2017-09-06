@@ -45,11 +45,15 @@ public class FeedApi {
         Timber.e("PATH : "+getPath+"/"+page);
         Timber.e("Page : "+page);
         return AndroidNetworking.get(getPath+"/"+page)
+                .addQueryParameter("page",page+"")
                 .setPriority(Priority.HIGH)
                 .build();
     }
 
     public class PostResponse extends ApiResponse<FeedPost> {
+
+    }
+    public class GetResponse extends ApiResponse<FeedTbl> {
 
     }
 

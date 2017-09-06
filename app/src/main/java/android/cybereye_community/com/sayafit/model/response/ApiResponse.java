@@ -23,7 +23,7 @@ public class ApiResponse<T> implements Serializable {
     @SerializedName("ApiElapsed")
     @Expose
     public String ApiElapsed;
-    @SerializedName("ApiList")
+    @SerializedName("result")
     @Expose
     public List<T> ApiList=new ArrayList<>();
 

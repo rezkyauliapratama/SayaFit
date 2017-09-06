@@ -101,12 +101,14 @@
                         android:layout_marginTop="@dimen/margin_small"
                         android:visibility="gone"/>
                     <com.app.infideap.stylishwidget.view.ATextView
+                        android:id="@+id/tv_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/secondaryTextColor"
                         android:text="Status"
                         android:padding="@dimen/margin_small"
-                        android:textAppearance="@style/TextStyle.Small"/>
+                        android:textAppearance="@style/TextStyle.Medium"
+                        android:textStyle="italic"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -128,6 +130,7 @@
             </ScrollView>
 
             <ImageView
+                android:id="@+id/btn_camera"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:src="@drawable/ic_camera_alt_gray_60dp"

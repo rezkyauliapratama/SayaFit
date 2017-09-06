@@ -10,7 +10,9 @@ import android.cybereye_community.com.sayafit.databinding.FragmentHomeBinding;
 import android.cybereye_community.com.sayafit.databinding.LayoutEmptyBinding;
 import android.cybereye_community.com.sayafit.handler.ApiClient;
 import android.cybereye_community.com.sayafit.handler.api.FeedApi;
+import android.cybereye_community.com.sayafit.handler.api.UserApi;
 import android.cybereye_community.com.sayafit.handler.listener.OnLoadMoreListener;
+import android.cybereye_community.com.sayafit.model.response.ApiResponse;
 import android.cybereye_community.com.sayafit.view.LayoutEmptyInflate;
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
@@ -18,6 +20,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -86,8 +89,6 @@ public class HomeFragment extends BaseFragment {
             listState = savedInstanceState.getParcelable(LIST_STATE_KEY);
             mPage = savedInstanceState.getInt(EXTRA2);
         }
-        new LayoutEmptyInflate(getContext(),binding.containerHome);
-
         return binding.getRoot();
     }
 
@@ -95,6 +96,7 @@ public class HomeFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mPage =1;
         mLayoutManager = new LinearLayoutManager(getContext());
         binding.recyclerView.setLayoutManager(mLayoutManager);
         adapter = new FeedRecyclerviewAdapter(getContext(),feeds);
@@ -127,7 +129,18 @@ public class HomeFragment extends BaseFragment {
             public void onLoadMore() {
                 Timber.e("NEXT PAGE");
                 mPage++;
-//                loadData();
+                loadData();
+            }
+        });
+
+        loadData();
+
+        binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Timber.e("SWIPEREFRESHLAYOUT");
+                mPage = 1;
+                loadData();
             }
         });
 
@@ -139,10 +152,19 @@ public class HomeFragment extends BaseFragment {
         }
 
             ApiClient.getInstance().feed().get(mPage)
-                    .getAsObject(FeedTbl.class, new ParsedRequestListener<FeedTbl>() {
+                    .getAsObject(FeedApi.GetResponse.class, new ParsedRequestListener<FeedApi.GetResponse>() {
                         @Override
-                        public void onResponse(FeedTbl response) {
-//                            new DownloadTask().execute(response);
+                        public void onResponse(FeedApi.GetResponse response) {
+                            if (response.ApiList.size()>0)
+                                new DownloadTask().execute(response);
+                            else{
+                                adapter.setLoaded(true);
+                                if (binding.swipeRefreshLayout != null) {
+                                    binding.swipeRefreshLayout.setRefreshing(false);
+                                }
+                            }
+
+
                         }
 
                         @Override
@@ -168,17 +190,17 @@ public class HomeFragment extends BaseFragment {
     }
 
 
-    private class DownloadTask extends AsyncTask<List<FeedTbl>, Void, Void> {
+    private class DownloadTask extends AsyncTask<FeedApi.GetResponse, Void, Void> {
 
         @Override
-        protected Void doInBackground(List<FeedTbl>... params) {
+        protected Void doInBackground(FeedApi.GetResponse... params) {
             if (params[0] != null){
-                if (params[0].size() > 0){
+                if (params[0].ApiList.size() > 0){
                     if (mPage == 1) {
                         feeds.clear();
                     }
                     int i=0;
-                    for (FeedTbl feed : params[0]){
+                    for (FeedTbl feed : params[0].ApiList){
                         long id = Facade.getInstance().getManageFeedTbl().add(feed);
                         if (id>0){
                             feeds.add(feed);
@@ -208,8 +230,9 @@ public class HomeFragment extends BaseFragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            Timber.e("On Post Execute");
             adapter.notifyDataSetChanged();
-            adapter.setLoaded();
+            adapter.setLoaded(false);
             if (binding.swipeRefreshLayout != null) {
                 binding.swipeRefreshLayout.setRefreshing(false);
             }

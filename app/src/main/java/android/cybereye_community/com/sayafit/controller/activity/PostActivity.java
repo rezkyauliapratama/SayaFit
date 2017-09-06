@@ -1,30 +1,52 @@
 package android.cybereye_community.com.sayafit.controller.activity;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.cybereye_community.com.sayafit.R;
+import android.cybereye_community.com.sayafit.controller.database.Facade;
+import android.cybereye_community.com.sayafit.controller.database.entity.UserTbl;
 import android.cybereye_community.com.sayafit.databinding.DialogPostFeedBinding;
+import android.cybereye_community.com.sayafit.handler.ApiClient;
+import android.cybereye_community.com.sayafit.model.request.FeedPost;
+import android.cybereye_community.com.sayafit.utility.Constant;
 import android.cybereye_community.com.sayafit.utility.Utils;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.StringRequestListener;
+import com.androidnetworking.interfaces.UploadProgressListener;
 import com.google.android.gms.awareness.Awareness;
+import com.google.android.gms.awareness.snapshot.DetectedActivityResult;
 import com.google.android.gms.awareness.snapshot.LocationResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.ActivityRecognitionResult;
+import com.google.android.gms.location.DetectedActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -37,8 +59,14 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import timber.log.Timber;
 
@@ -60,6 +88,12 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     private String knownName;
 
+    private static final int TAKE_PICTURE = 1;
+    private Uri imageUri;
+    File newPath, mFile;
+    private File newFile;
+    DetectedActivity mostProbableActivity;
+
     private GoogleApiClient mGoogleApiClient;
 
 
@@ -75,6 +109,10 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
         initMap();
         setupGoogleApiClient();
         getLocation();
+        getUserActivity();
+
+        initCamera();
+        initPost();
     }
 
     private void setupGoogleApiClient() {
@@ -211,5 +249,204 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
             }
         }
 
+    }
+
+    private void getUserActivity() {
+        Awareness.SnapshotApi.getDetectedActivity(mGoogleApiClient)
+                .setResultCallback(new ResultCallback<DetectedActivityResult>() {
+                    @Override
+                    public void onResult(@NonNull DetectedActivityResult detectedActivityResult) {
+                        if (detectedActivityResult.getStatus().isSuccess()) {
+                            ActivityRecognitionResult activityRecognitionResult =
+                                    detectedActivityResult.getActivityRecognitionResult();
+
+                            long detectedActivity =
+                                    activityRecognitionResult.getTime();
+                            String dateString = DateFormat.format("dd/MM/yyyy hh:mm:ss",
+                                    new Date(detectedActivity)).toString();
+
+                            Timber.e("DATE : "+dateString);
+                            mostProbableActivity =
+                                    activityRecognitionResult.getMostProbableActivity();
+
+                            binding.tvStatus.setText("You can "+getActivityString(mostProbableActivity.getType())+" in here");
+
+                        }
+                    }
+                });
+    }
+
+    private void initCamera(){
+        binding.btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Images.Media.TITLE, "Image");
+                values.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
+                imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, TAKE_PICTURE);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case TAKE_PICTURE:
+                if (resultCode == Activity.RESULT_OK) {
+                    File folder = new File(getFilesDir(), Constant.getInstance().PROFILE_FOLDER);
+                    String filename = Utils.getInstance().time().getDateForFilename() + ".jpg";
+                    String[] folderNames = folder.getAbsolutePath().split("/");
+
+                    for (String folderName : folderNames) {
+                        folder = new File(getFilesDir(), folderName);
+                        if (!folder.exists())
+                            folder.mkdirs();
+                    }
+                    if(!folder.exists()){
+                        Timber.e("folder tidak eksis");
+                        folder.mkdir();
+                    }
+                    newFile = new File(folder, filename);
+//
+//                    Timber.d("onActivityResult : mFile :"+mFile.getAbsolutePath());
+//                    Timber.d("onActivityResult : newFile :"+newFile.getAbsolutePath());
+//                    try {
+//                        FileUtils.moveFile(mFile, newFile);
+//                        ContentResolver cr = getContext().getContentResolver();
+                    Bitmap bitmap;
+                    try {
+//                            bitmap = BitmapFactory.decodeFile(newFile.getAbsolutePath());
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+
+                        Timber.e("Location photo : " + newFile.getAbsolutePath());
+                        Timber.e("Bitmap ori SIZE : "+bitmap.getWidth() + " | "+bitmap.getHeight());
+
+                        float scale = (float) 1240/ bitmap.getHeight();
+                        int newWidth = (int) Math.round(bitmap.getWidth() * scale);
+                        bitmap = Bitmap.createScaledBitmap(bitmap, newWidth, 1240, true);
+                        Timber.e("Bitmap RESIZE : "+bitmap.getWidth() + " | "+bitmap.getHeight());
+
+
+                        FileOutputStream out = null;
+                        try {
+                            out = new FileOutputStream(newFile.getAbsolutePath());
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, out); // bmp is your Bitmap instance
+                            // PNG is a lossless format, the compression factor (100) is ignored
+                        } catch (Exception e) {
+                            Timber.e("CAMERA ERR 1 : "+e.getMessage());
+                            e.printStackTrace();
+                        } finally {
+                            try {
+                                if (out != null) {
+                                    out.close();
+                                }
+                            } catch (IOException e) {
+                                Timber.e("CAMERA ERR 2: "+e.getMessage());
+
+                            }
+                        }
+                        binding.ivFeed.setVisibility(View.VISIBLE);
+                        binding.ivFeed.setImageBitmap(bitmap);
+
+                    } catch (Exception e) {
+                        Log.e("Camera", e.toString());
+                    }
+
+
+                }
+
+        }
+    }
+    private String getActivityString(int activity) {
+        switch (activity) {
+            case DetectedActivity.IN_VEHICLE:
+                return getString(R.string.activity_in_vehicle);
+            case DetectedActivity.ON_BICYCLE:
+                return getString(R.string.activity_on_bicycle);
+            case DetectedActivity.ON_FOOT:
+                return getString(R.string.activity_on_foot);
+            case DetectedActivity.RUNNING:
+                return getString(R.string.activity_running);
+            case DetectedActivity.STILL:
+                return getString(R.string.activity_still);
+            case DetectedActivity.TILTING:
+                return getString(R.string.activity_tilting);
+            case DetectedActivity.WALKING:
+                return getString(R.string.activity_walking);
+            default:
+                return getString(R.string.activity_unknown);
+        }
+    }
+
+    private void initPost(){
+        binding.layoutButton.buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String imageName = "";
+                if (newFile != null){
+                    imageName = newFile.getName();
+                }
+                UserTbl user = Facade.getInstance().getManageUserTbl().get();
+                FeedPost feed = new FeedPost();
+                feed.setEmail(user.getEmail());
+                feed.setFeed(binding.etFeed.getText().toString());
+                feed.setNama(user.getNama());
+                feed.setPreview("1");
+                feed.setImage(imageName);
+                feed.setLatitude(centerLatLng.latitude+"");
+                feed.setLongitude(centerLatLng.longitude+"");
+                feed.setDescription("");
+                feed.setAwereness_activity(mostProbableActivity.getType()+"");
+
+                ApiClient.getInstance().feed().post(feed)
+                        .getAsString(new StringRequestListener() {
+                            @Override
+                            public void onResponse(String response) {
+                                Timber.e("RESPONSE :"+response);
+                                if (newFile != null){
+                                    AndroidNetworking.upload("http://sayafit.cybereye-community.com/upload/")
+                                            .addMultipartFile("image",newFile)
+                                            .setTag("uploadTest")
+                                            .setPriority(Priority.HIGH)
+                                            .build()
+                                            .setUploadProgressListener(new UploadProgressListener() {
+                                                @Override
+                                                public void onProgress(long bytesUploaded, long totalBytes) {
+                                                    // do anything with progress
+                                                    Timber.e("IMAGE prog: "+(double)(bytesUploaded/totalBytes));
+                                                }
+                                            })
+                                            .getAsJSONObject(new JSONObjectRequestListener() {
+                                                @Override
+                                                public void onResponse(JSONObject response) {
+                                                    // do anything with response
+                                                    Timber.e("Image Resp : "+response);
+                                                    finish();
+                                                }
+                                                @Override
+                                                public void onError(ANError error) {
+                                                    // handle error
+                                                    Timber.e("Image Err : "+error.getMessage());
+                                                    finish();
+                                                }
+                                            });
+                                }
+
+                            }
+
+                            @Override
+                            public void onError(ANError anError) {
+
+                            }
+                        });
+
+            }
+        });
     }
 }

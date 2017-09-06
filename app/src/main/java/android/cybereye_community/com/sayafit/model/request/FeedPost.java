@@ -17,6 +17,14 @@ public class FeedPost {
     String preview;
     @SerializedName(value = "image")
     String image;
+    @SerializedName(value = "lat")
+    String latitude;
+    @SerializedName(value = "lng")
+    String longitude;
+    @SerializedName(value = "description")
+    String description;
+    @SerializedName(value = "awareness_activity")
+    String awereness_activity;
 
     public FeedPost(){}
     public FeedPost(String feed, String email, String nama, String preview, String image) {
@@ -65,5 +73,37 @@ public class FeedPost {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAwereness_activity() {
+        return awereness_activity;
+    }
+
+    public void setAwereness_activity(String awereness_activity) {
+        this.awereness_activity = awereness_activity;
     }
 }

@@ -3,6 +3,7 @@ package android.cybereye_community.com.sayafit.controller.adapter;
 import android.cybereye_community.com.sayafit.handler.listener.OnLoadMoreListener;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
@@ -14,7 +15,7 @@ public abstract class BaseAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private OnLoadMoreListener onLoadMoreListener;
     private boolean isLoading;
-    private int visibleThreshold = 5;
+    private int visibleThreshold = 1;
     private int lastVisibleItem, totalItemCount;
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -45,7 +46,7 @@ public abstract class BaseAdapter extends RecyclerView.Adapter<RecyclerView.View
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 totalItemCount = recyclerView.getLayoutManager().getItemCount();
-                lastVisibleItem = ((GridLayoutManager)recyclerView.getLayoutManager()).findLastVisibleItemPosition();
+                lastVisibleItem = ((LinearLayoutManager)recyclerView.getLayoutManager()).findLastVisibleItemPosition();
                 if (!isLoading && totalItemCount <= (lastVisibleItem + visibleThreshold)) {
                     if (onLoadMoreListener != null) {
                         onLoadMoreListener.onLoadMore();
@@ -56,8 +57,9 @@ public abstract class BaseAdapter extends RecyclerView.Adapter<RecyclerView.View
         });
     }
 
-    public void setLoaded() {
-        isLoading = false;
+    public void setLoaded(boolean bol) {
+        isLoading = bol;
     }
+
 
 }

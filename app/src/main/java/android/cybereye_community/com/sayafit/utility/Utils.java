@@ -11,6 +11,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.TrafficStats;
 import android.os.Build;
+import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.Window;
@@ -23,6 +24,7 @@ import com.securepreferences.SecurePreferences;
 
 import org.jetbrains.annotations.Contract;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -160,5 +162,18 @@ public class Utils {
             return "";
         }
     }
+
+    public static File getFolder(String questionFileFolder) {
+        File folder = Environment.getExternalStorageDirectory();
+        String[] folderNames = questionFileFolder.split("/");
+        for (String folderName : folderNames) {
+            folder = new File(folder, folderName);
+            if (!folder.exists())
+                folder.mkdirs();
+        }
+
+        return folder;
+    }
+
 
 }
