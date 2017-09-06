@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="aes-crypto-0.0.4">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/b3fd2d549ead95d26c318c6841feed7c534fec7f/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/b3fd2d549ead95d26c318c6841feed7c534fec7f/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scottyab/aes-crypto/0.0.4/90d8b027bda5ce759d22a979ed01a2f06bc3bdc1/aes-crypto-0.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
