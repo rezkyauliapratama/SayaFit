@@ -22,6 +22,7 @@ public class Facade {
 
     private ManageUserTbl manageUserTbl;
     private ManageFeedTbl manageFeedTbl;
+    private ManageGuideTbl manageGuideTbl;
     private ManageScheduleTbl manageScheduleTbl;
 
 
@@ -29,6 +30,7 @@ public class Facade {
         this.session = daoSession;
         manageUserTbl = new ManageUserTbl(this);
         manageFeedTbl = new ManageFeedTbl(this);
+        manageGuideTbl = new ManageGuideTbl(this);
         manageScheduleTbl = new ManageScheduleTbl(this);
     }
 
@@ -38,6 +40,9 @@ public class Facade {
 
     public ManageFeedTbl getManageFeedTbl() {
         return manageFeedTbl;
+    }
+    public ManageGuideTbl getManageGuideTbl() {
+        return manageGuideTbl;
     }
     public ManageScheduleTbl getManageScheduleTbl() {
         return manageScheduleTbl;

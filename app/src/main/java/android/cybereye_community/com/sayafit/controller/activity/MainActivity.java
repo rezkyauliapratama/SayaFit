@@ -5,7 +5,9 @@ import android.cybereye_community.com.sayafit.EventBus;
 import android.cybereye_community.com.sayafit.R;
 import android.cybereye_community.com.sayafit.controller.fragment.BaseFragment;
 import android.cybereye_community.com.sayafit.controller.fragment.FeedDialogFragment;
+import android.cybereye_community.com.sayafit.controller.fragment.GuideFragment;
 import android.cybereye_community.com.sayafit.controller.fragment.HomeFragment;
+import android.cybereye_community.com.sayafit.controller.fragment.MapDialogFragment;
 import android.cybereye_community.com.sayafit.controller.fragment.ScheduleFragment;
 import android.cybereye_community.com.sayafit.controller.fragment.ShareLocationFragment;
 import android.cybereye_community.com.sayafit.databinding.ActivityMainBinding;
@@ -34,6 +36,7 @@ import android.widget.Toast;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -48,7 +51,7 @@ import timber.log.Timber;
  */
 
 public class MainActivity extends BaseActivity
-    implements FeedDialogFragment.onFragmentInteraction{
+   {
 
     ActivityMainBinding binding;
 
@@ -160,7 +163,7 @@ public class MainActivity extends BaseActivity
         fragments.add(ShareLocationFragment.newInstance());
         fragments.add(ScheduleFragment.newInstance());
         fragments.add(new BaseFragment());
-        fragments.add(new BaseFragment());
+        fragments.add(GuideFragment.newInstance());
 
         fragment = fragments.get(0);
 
@@ -187,24 +190,8 @@ public class MainActivity extends BaseActivity
 
     }
 
-    @Override
-    public void onPostFeedInteraction(FeedPost feed) {
-        ApiClient.getInstance().feed().post(feed)
-                .getAsString(new StringRequestListener() {
-                    @Override
-                    public void onResponse(String response) {
-                        Timber.e("FEED :"+response);
-                    }
 
-                    @Override
-                    public void onError(ANError anError) {
 
-                    }
-                });
-    }
 
-    @Override
-    public void onAlertInteraction(String str) {
-        Snackbar.make(binding.messageBoxLog,str,Snackbar.LENGTH_LONG).show();
-    }
+
 }

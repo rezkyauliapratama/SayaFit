@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="stylish-widget-1.3.7">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/8132154933785b0c419d15e24d1b98fa07bfd279/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/8132154933785b0c419d15e24d1b98fa07bfd279/output/res" />
+      <root url="file://$USER_HOME$/.android/build-cache/52b5eb96e58cb03f57806daa2f93c236d3f135a0/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/52b5eb96e58cb03f57806daa2f93c236d3f135a0/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

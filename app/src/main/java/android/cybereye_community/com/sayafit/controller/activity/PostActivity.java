@@ -58,6 +58,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
+import com.infideap.atomic.Atom;
+import com.infideap.atomic.FutureCallback;
+import com.infideap.atomic.ProgressCallback;
 
 import org.json.JSONObject;
 
@@ -67,6 +70,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import timber.log.Timber;
 
@@ -299,11 +303,11 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
         switch (requestCode) {
             case TAKE_PICTURE:
                 if (resultCode == Activity.RESULT_OK) {
-                    File folder = new File(getFilesDir(), Constant.getInstance().PROFILE_FOLDER);
+                    File folder = Utils.getFolder(Constant.getInstance().PROFILE_FOLDER);/*new File(getFilesDir(), Constant.getInstance().PROFILE_FOLDER);*/
                     String filename = Utils.getInstance().time().getDateForFilename() + ".jpg";
                     String[] folderNames = folder.getAbsolutePath().split("/");
 
-                    for (String folderName : folderNames) {
+                   /* for (String folderName : folderNames) {
                         folder = new File(getFilesDir(), folderName);
                         if (!folder.exists())
                             folder.mkdirs();
@@ -311,7 +315,7 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                     if(!folder.exists()){
                         Timber.e("folder tidak eksis");
                         folder.mkdir();
-                    }
+                    }*/
                     newFile = new File(folder, filename);
 //
 //                    Timber.d("onActivityResult : mFile :"+mFile.getAbsolutePath());
@@ -407,34 +411,33 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                 ApiClient.getInstance().feed().post(feed)
                         .getAsString(new StringRequestListener() {
                             @Override
-                            public void onResponse(String response) {
+                            public void onResponse(final String response) {
                                 Timber.e("RESPONSE :"+response);
+                                Toast.makeText(PostActivity.this,"Your post will we analyse",Toast.LENGTH_LONG).show();
                                 if (newFile != null){
-                                    AndroidNetworking.upload("http://sayafit.cybereye-community.com/upload/")
-                                            .addMultipartFile("image",newFile)
-                                            .setTag("uploadTest")
-                                            .setPriority(Priority.HIGH)
-                                            .build()
-                                            .setUploadProgressListener(new UploadProgressListener() {
+
+                                    Atom.with(PostActivity.this)
+                                            .load("http://sayafit.cybereye-community.com/upload/")
+                                            .setMultipartFile("image", newFile)
+                                            //Optional: Upload Progress
+                                            .uploadProgress(new ProgressCallback() {
                                                 @Override
-                                                public void onProgress(long bytesUploaded, long totalBytes) {
-                                                    // do anything with progress
-                                                    Timber.e("IMAGE prog: "+(double)(bytesUploaded/totalBytes));
+                                                public void onProgress(long uploaded, long total) {
+                                                    Timber.e("prof : "+(uploaded/total));
+
                                                 }
                                             })
-                                            .getAsJSONObject(new JSONObjectRequestListener() {
+                                            .asString()
+                                            .setCallback(new FutureCallback<String>() {
                                                 @Override
-                                                public void onResponse(JSONObject response) {
-                                                    // do anything with response
-                                                    Timber.e("Image Resp : "+response);
-                                                    finish();
+                                                public void onCompleted(Exception e, String result) {
+                                                    if (e != null){
+                                                        Timber.e("ERROR UP : "+e.getMessage());
+                                                        return;
+                                                    }
+                                                    Timber.e("result upload : "+result);
                                                 }
-                                                @Override
-                                                public void onError(ANError error) {
-                                                    // handle error
-                                                    Timber.e("Image Err : "+error.getMessage());
-                                                    finish();
-                                                }
+
                                             });
                                 }
 
@@ -448,5 +451,35 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
 
             }
         });
+    }
+
+    private void uploadFile(){
+        AndroidNetworking.upload("http://sayafit.cybereye-community.com/upload/")
+                .addMultipartFile("image",newFile)
+                .setTag("uploadTest")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .setUploadProgressListener(new UploadProgressListener() {
+                    @Override
+                    public void onProgress(long bytesUploaded, long totalBytes) {
+                        // do anything with progress
+//                                                    Timber.e("IMAGE prog: "+(double)(bytesUploaded/totalBytes));
+                    }
+                })
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // do anything with response
+                        Timber.e("Image Resp : "+response);
+
+                        finish();
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                        Timber.e("Image Err : "+new Gson().toJson(error));
+                        finish();
+                    }
+                });
     }
 }

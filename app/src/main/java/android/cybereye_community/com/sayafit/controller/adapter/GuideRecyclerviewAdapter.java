@@ -5,11 +5,15 @@ import android.cybereye_community.com.sayafit.R;
 import android.cybereye_community.com.sayafit.controller.database.Facade;
 import android.cybereye_community.com.sayafit.controller.database.entity.GuideTbl;
 import android.cybereye_community.com.sayafit.controller.database.entity.UserTbl;
+import android.cybereye_community.com.sayafit.controller.fragment.MapDialogFragment;
 import android.cybereye_community.com.sayafit.databinding.ItemListFeedBinding;
+import android.cybereye_community.com.sayafit.databinding.ItemListGuideBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
 
@@ -51,8 +55,14 @@ public class GuideRecyclerviewAdapter extends BaseAdapter {
         holder.binding.tvName.setText(item.getNm_category());
         holder.binding.tvTime.setText(item.getDate());
         holder.binding.tvContent.setText(item.getKet());
-    }
 
+        holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
 
     @Override
     public int getItemCount() {
@@ -60,11 +70,11 @@ public class GuideRecyclerviewAdapter extends BaseAdapter {
     }
 
     public class MainViewHolder extends RecyclerView.ViewHolder {
-        private final ItemListFeedBinding binding;
+        private final ItemListGuideBinding binding;
 
         public MainViewHolder(View itemView) {
             super(itemView);
-            binding = ItemListFeedBinding.bind(itemView);
+            binding = ItemListGuideBinding.bind(itemView);
 
         }
     }

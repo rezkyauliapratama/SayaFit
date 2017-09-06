@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="aes-crypto-0.0.4">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/b3fd2d549ead95d26c318c6841feed7c534fec7f/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/b3fd2d549ead95d26c318c6841feed7c534fec7f/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/f6b0f9e89a6e9c2a2266de400e91f83849168a27/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/f6b0f9e89a6e9c2a2266de400e91f83849168a27/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

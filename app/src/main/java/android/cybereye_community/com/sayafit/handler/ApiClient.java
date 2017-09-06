@@ -1,6 +1,7 @@
 package android.cybereye_community.com.sayafit.handler;
 
 import android.cybereye_community.com.sayafit.handler.api.FeedApi;
+import android.cybereye_community.com.sayafit.handler.api.GuideApi;
 import android.cybereye_community.com.sayafit.handler.api.UserApi;
 
 import com.androidnetworking.AndroidNetworking;
@@ -22,6 +23,7 @@ public class ApiClient {
     // Step 2: private constructor
     private ApiClient() {
         user = new UserApi(this);
+        guide = new GuideApi(this);
         feed = new FeedApi(this);
 
     }
@@ -52,6 +54,11 @@ public class ApiClient {
     private final FeedApi feed;
     public FeedApi feed() {
         return feed;
+    }
+
+    private final GuideApi guide;
+    public GuideApi guide() {
+        return guide;
     }
 
 
