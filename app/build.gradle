@@ -24,6 +24,7 @@ android {
 
     buildTypes.each {
         it.resValue 'string', 'AWARENESS_API_KEY', keystoreProperties['AwarenessApi']
+        it.buildConfigField 'String', 'AwarenessApi', keystoreProperties['AwarenessApi']
     }
 
     buildTypes {

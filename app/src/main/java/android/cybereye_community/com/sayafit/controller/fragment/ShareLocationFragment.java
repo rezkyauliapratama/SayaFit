@@ -120,9 +120,9 @@ public class ShareLocationFragment extends BaseFragment {
                                     for (PlaceLikelihood likelihood : placeLikelihood) {
 
                                         for (int i : likelihood.getPlace().getPlaceTypes()){
-                                            if (i == Place.TYPE_HEALTH || i == Place.TYPE_GYM || i == Place.TYPE_PHYSIOTHERAPIST || i == Place.TYPE_PARK){
+//                                            if (i == Place.TYPE_HEALTH || i == Place.TYPE_GYM || i == Place.TYPE_PHYSIOTHERAPIST || i == Place.TYPE_PARK){
                                                 addPlace(likelihood,i);
-                                            }
+//                                            }
                                         }
 
                                     }

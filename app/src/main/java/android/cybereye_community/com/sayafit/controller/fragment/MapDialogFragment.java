@@ -4,6 +4,11 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.cybereye_community.com.sayafit.R;
+import android.cybereye_community.com.sayafit.model.DirectionObject;
+import android.cybereye_community.com.sayafit.model.LegsObject;
+import android.cybereye_community.com.sayafit.model.PolylineObject;
+import android.cybereye_community.com.sayafit.model.RouteObject;
+import android.cybereye_community.com.sayafit.model.StepsObject;
 import android.cybereye_community.com.sayafit.utility.Helper;
 import android.cybereye_community.com.sayafit.utility.Utils;
 import android.graphics.Bitmap;
@@ -23,6 +28,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.DownloadProgressListener;
+import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.google.android.gms.awareness.Awareness;
 import com.google.android.gms.awareness.snapshot.LocationResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -37,9 +47,13 @@ import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import timber.log.Timber;
 
@@ -158,7 +172,7 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
             Timber.e("Center latlng not null");
             try {
                 knownName = Utils.getInstance().setLocation(getContext(),centerLatLng);
-                addressTextView.setText(knownName);
+                addressTextView.setText("Destination : \n"+knownName+"\n\n");
             } catch (IOException e) {
                 Timber.e(e.getMessage());
             }
@@ -257,6 +271,9 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
                 .icon(getBitmapDescriptor(R.drawable.ic_map_marker_1))
                 .title("Your Destination"));
 
+        if (currentLatLng!= null && centerLatLng != null){
+            getDirection();
+        }
 
     }
 
@@ -276,18 +293,104 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
 
         if (currentLatLng!= null && centerLatLng != null){
+        getDirection();
         }
 
     }
 
 
+    private void setRouteDistanceAndDuration(String distance, String duration){
+
+        addressTextView.append("Distance : "+distance+"\n");
+        addressTextView.append("Duration : "+duration+"\n");
+    }
+    private List<LatLng> getDirectionPolylines(List<RouteObject> routes){
+        List<LatLng> directionList = new ArrayList<LatLng>();
+        for(RouteObject route : routes){
+            List<LegsObject> legs = route.getLegs();
+            for(LegsObject leg : legs){
+                String routeDistance = leg.getDistance().getText();
+                String routeDuration = leg.getDuration().getText();
+                setRouteDistanceAndDuration(routeDistance, routeDuration);
+                List<StepsObject> steps = leg.getSteps();
+                for(StepsObject step : steps){
+                    PolylineObject polyline = step.getPolyline();
+                    String points = polyline.getPoints();
+                    List<LatLng> singlePolyline = decodePoly(points);
+                    for (LatLng direction : singlePolyline){
+                        directionList.add(direction);
+                    }
+                }
+            }
+        }
+        return directionList;
+    }
+
+    private void drawRouteOnMap(GoogleMap map, List<LatLng> positions){
+        PolylineOptions options = new PolylineOptions().width(5).color(Color.RED).geodesic(true);
+        options.addAll(positions);
+        Polyline polyline = map.addPolyline(options);
+    }
+    /**
+     * Method to decode polyline points
+     * Courtesy : http://jeffreysambells.com/2010/05/27/decoding-polylines-from-google-maps-direction-api-with-java
+     * */
+    private List<LatLng> decodePoly(String encoded) {
+        List<LatLng> poly = new ArrayList<>();
+        int index = 0, len = encoded.length();
+        int lat = 0, lng = 0;
+        while (index < len) {
+            int b, shift = 0, result = 0;
+            do {
+                b = encoded.charAt(index++) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            int dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+            lat += dlat;
+            shift = 0;
+            result = 0;
+            do {
+                b = encoded.charAt(index++) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            int dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+            lng += dlng;
+            LatLng p = new LatLng((((double) lat / 1E5)),
+                    (((double) lng / 1E5)));
+            poly.add(p);
+        }
+        return poly;
+    }
 
     private void getDirection(){
         //use Google Direction API to get the route between these Locations
         String directionApiPath = Helper.getUrl(String.valueOf(currentLatLng.latitude), String.valueOf(currentLatLng.longitude),
                 String.valueOf(centerLatLng.latitude), String.valueOf(centerLatLng.longitude));
 
-        String url = getUrl(origin
+        Timber.e("directionApiPath : "+directionApiPath);
+
+
+        AndroidNetworking.get(directionApiPath)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsObject(DirectionObject.class,new ParsedRequestListener<DirectionObject>() {
+                    @Override
+                    public void onResponse(DirectionObject response) {
+                        // do anything with response
+                        Timber.e("RESPONSE : "+new Gson().toJson(response));
+                        List<LatLng> mDirections = getDirectionPolylines(response.getRoutes());
+                        drawRouteOnMap(mMap, mDirections);
+
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                        Timber.e("ERROR : "+error.getMessage());
+
+                    }
+                });
     }
     public int adjustAlpha(int color, float factor) {
         int alpha = Math.round(Color.alpha(color) * factor);
