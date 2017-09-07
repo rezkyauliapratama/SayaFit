@@ -116,13 +116,25 @@ public class ShareLocationFragment extends BaseFragment {
 
                                 List<PlaceLikelihood> placeLikelihood =
                                         placesResult.getPlaceLikelihoods();
+                                List<PlaceLikelihood> tempPlacelikehoods = new ArrayList<PlaceLikelihood>();
                                 if (placeLikelihood != null && !placeLikelihood.isEmpty()) {
                                     for (PlaceLikelihood likelihood : placeLikelihood) {
+                                        tempPlacelikehoods.add(likelihood);
 
                                         for (int i : likelihood.getPlace().getPlaceTypes()){
-//                                            if (i == Place.TYPE_HEALTH || i == Place.TYPE_GYM || i == Place.TYPE_PHYSIOTHERAPIST || i == Place.TYPE_PARK){
+                                            if (i == Place.TYPE_HEALTH || i == Place.TYPE_GYM || i == Place.TYPE_PHYSIOTHERAPIST || i == Place.TYPE_PARK){
                                                 addPlace(likelihood,i);
-//                                            }
+                                                tempPlacelikehoods.remove(likelihood);
+                                                break;
+                                            }
+                                        }
+
+                                    }
+
+                                    for (PlaceLikelihood likelihood : tempPlacelikehoods) {
+
+                                        for (int i : likelihood.getPlace().getPlaceTypes()){
+                                                addPlace(likelihood,-1);
                                         }
 
                                     }

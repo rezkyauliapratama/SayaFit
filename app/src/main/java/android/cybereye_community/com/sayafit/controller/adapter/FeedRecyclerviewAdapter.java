@@ -7,12 +7,16 @@ import android.cybereye_community.com.sayafit.controller.database.entity.FeedTbl
 import android.cybereye_community.com.sayafit.controller.database.entity.FeedTblDao;
 import android.cybereye_community.com.sayafit.controller.database.entity.UserTbl;
 import android.cybereye_community.com.sayafit.databinding.ItemListFeedBinding;
+import android.cybereye_community.com.sayafit.utility.DimensionConverter;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -66,6 +70,28 @@ public class FeedRecyclerviewAdapter extends BaseAdapter{
                     .load(item.image)
                     .into(holder.binding.ivFeed);
         }
+
+        ColorGenerator generator = ColorGenerator.MATERIAL;
+        TextDrawable drawable = TextDrawable.builder()
+                .beginConfig()
+                .fontSize(
+                        DimensionConverter.getInstance().stringToDimensionPixelSize(
+                                "12sp", mContext.getResources().getDisplayMetrics()
+                        )
+                )
+                .withBorder(
+                        DimensionConverter.getInstance().stringToDimensionPixelSize(
+                                "1dp", mContext.getResources().getDisplayMetrics()
+                        )
+                )
+                .bold()
+                .textColor(generator.getColor(user.nama))
+                .endConfig()
+                .buildRound(
+                        String.valueOf(user.nama.toUpperCase().charAt(0)),
+                        Color.WHITE
+                );
+        holder.binding.ivAvatar.setImageDrawable(drawable);
     }
 
 

@@ -141,8 +141,7 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
         button_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LocationDialogListener listener = (LocationDialogListener) getTargetFragment();
-                listener.onCancel();
+                dismiss();
 
             }
         });

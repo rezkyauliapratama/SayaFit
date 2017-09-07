@@ -5,17 +5,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorLine"
+            android:orientation="vertical"
             android:minHeight="@dimen/margin_xxsmall">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_feed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:padding="@dimen/margin_xsmall"
+                    android:background="@color/colorGrey_100"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    android:visibility="visible"/>
+                <com.app.infideap.stylishwidget.view.AEditText
+                    android:id="@+id/et_feed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/EditText.RoundBorder"
+                    android:hint="Write your moment in here"
+                    android:background="@color/colorBlueGrey_50"
+                    android:textAppearance="@style/TextStyle.Small"
+                    android:gravity="top"
+                    android:textColor="@color/secondaryTextColor"
+                    android:minLines="5"/>
+
+
+            </LinearLayout>
 
                 <com.app.infideap.stylishwidget.view.ATextView
                     android:id="@+id/button_save"
                     style="@style/Button.Success.Fill"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryTextColor"
                     android:layout_weight="1"
                     android:text="@string/post"
-                    android:textAppearance="@style/TextStyle.AsButton" />
+                    android:textAppearance="@style/TextStyle.Small" />
 
         </LinearLayout>
 </layout>

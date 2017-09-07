@@ -1,8 +1,10 @@
 package android.cybereye_community.com.sayafit.controller.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.cybereye_community.com.sayafit.EventBus;
 import android.cybereye_community.com.sayafit.R;
+import android.cybereye_community.com.sayafit.controller.database.Facade;
 import android.cybereye_community.com.sayafit.controller.fragment.BaseFragment;
 import android.cybereye_community.com.sayafit.controller.fragment.FeedDialogFragment;
 import android.cybereye_community.com.sayafit.controller.fragment.GuideFragment;
@@ -25,13 +27,16 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.ParsedRequestListener;
@@ -66,6 +71,11 @@ public class MainActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        setSupportActionBar(binding.toolbar);
+        binding.toolbar.setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         fragments = new ArrayList<>();
 
@@ -190,6 +200,52 @@ public class MainActivity extends BaseActivity
 
     }
 
+
+       @Override
+       public boolean onCreateOptionsMenu(Menu menu) {
+           // Inflate the menu; this adds items to the action bar if it is present.
+           getMenuInflater().inflate(R.menu.main, menu);
+
+           return true;
+
+       }
+
+       @Override
+       public boolean onOptionsItemSelected(MenuItem item) {
+           int id = item.getItemId();
+
+            Timber.e("MENU !");
+           //noinspection SimplifiableIfStatement
+           //noinspection SimplifiableIfStatement
+           if (id == R.id.action_logout) {
+               Timber.e("LOGOUT !");
+               AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                       .setMessage(R.string.logout_confirmation)
+
+                       .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialogInterface, int i) {
+
+                               Facade.getInstance().getManageUserTbl().removeAll();
+                               startActivity(new Intent(MainActivity.this,LoginActivity.class));
+
+                           }
+                       })
+                       .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialog, int which) {
+                               dialog.cancel();
+                           }
+                       });
+
+               AlertDialog dialog = builder.create();
+               dialog.show();
+
+               return true;
+           }
+           return super.onOptionsItemSelected(item);
+
+       }
 
 
 

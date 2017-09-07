@@ -273,7 +273,7 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                             mostProbableActivity =
                                     activityRecognitionResult.getMostProbableActivity();
 
-                            binding.tvStatus.setText("You can "+getActivityString(mostProbableActivity.getType())+" in here");
+                            getActivityString(mostProbableActivity.getType());
 
                         }
                     }
@@ -355,8 +355,8 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
 
                             }
                         }
-                        binding.ivFeed.setVisibility(View.VISIBLE);
-                        binding.ivFeed.setImageBitmap(bitmap);
+                        binding.layoutButton.ivFeed.setVisibility(View.VISIBLE);
+                        binding.layoutButton.ivFeed.setImageBitmap(bitmap);
 
                     } catch (Exception e) {
                         Log.e("Camera", e.toString());
@@ -367,24 +367,16 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
 
         }
     }
-    private String getActivityString(int activity) {
+    private void getActivityString(int activity) {
         switch (activity) {
-            case DetectedActivity.IN_VEHICLE:
-                return getString(R.string.activity_in_vehicle);
             case DetectedActivity.ON_BICYCLE:
-                return getString(R.string.activity_on_bicycle);
-            case DetectedActivity.ON_FOOT:
-                return getString(R.string.activity_on_foot);
+                binding.ivActivity.setImageResource(R.drawable.ic_run);
+                binding.tvStatus.setText("This place is suitable for running activity");
             case DetectedActivity.RUNNING:
-                return getString(R.string.activity_running);
-            case DetectedActivity.STILL:
-                return getString(R.string.activity_still);
-            case DetectedActivity.TILTING:
-                return getString(R.string.activity_tilting);
-            case DetectedActivity.WALKING:
-                return getString(R.string.activity_walking);
+                binding.ivActivity.setImageResource(R.drawable.ic_bicycle);
+                binding.tvStatus.setText("This place is suitable for bicycle activity");
             default:
-                return getString(R.string.activity_unknown);
+                binding.tvStatus.setText("");
         }
     }
 
@@ -399,7 +391,7 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                 UserTbl user = Facade.getInstance().getManageUserTbl().get();
                 FeedPost feed = new FeedPost();
                 feed.setEmail(user.getEmail());
-                feed.setFeed(binding.etFeed.getText().toString());
+                feed.setFeed(binding.layoutButton.etFeed.getText().toString());
                 feed.setNama(user.getNama());
                 feed.setPreview("1");
                 feed.setImage(imageName);
@@ -433,9 +425,11 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                                                 public void onCompleted(Exception e, String result) {
                                                     if (e != null){
                                                         Timber.e("ERROR UP : "+e.getMessage());
+                                                        finish();
                                                         return;
                                                     }
                                                     Timber.e("result upload : "+result);
+                                                    finish();
                                                 }
 
                                             });

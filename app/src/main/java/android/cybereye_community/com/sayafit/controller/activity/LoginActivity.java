@@ -26,6 +26,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 
 import timber.log.Timber;
@@ -96,10 +97,12 @@ public class LoginActivity extends BaseActivity implements
             final UserTbl userTbl = new UserTbl();
             userTbl.email = acct.getEmail();
             userTbl.city = "";
-            userTbl.gender = "";
-            userTbl.nama= acct.getDisplayName();
-            userTbl.token= acct.getIdToken();
-            Timber.e("REQ : "+new Gson().toJson(userTbl));
+            userTbl.nama = acct.getDisplayName();
+            userTbl.token = FirebaseInstanceId.getInstance().getToken();
+            userTbl.photo = acct.getPhotoUrl() == null? "" : acct.getPhotoUrl().getPath();
+
+            Timber.e("request : "+new Gson().toJson(userTbl));
+
 
             ApiClient.getInstance().user().post(userTbl).
                     getAsObject(UserApi.Response.class, new ParsedRequestListener<UserApi.Response>() {
