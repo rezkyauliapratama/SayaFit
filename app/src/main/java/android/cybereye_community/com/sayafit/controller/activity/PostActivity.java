@@ -305,7 +305,6 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                 if (resultCode == Activity.RESULT_OK) {
                     File folder = Utils.getFolder(Constant.getInstance().PROFILE_FOLDER);/*new File(getFilesDir(), Constant.getInstance().PROFILE_FOLDER);*/
                     String filename = Utils.getInstance().time().getDateForFilename() + ".jpg";
-                    String[] folderNames = folder.getAbsolutePath().split("/");
 
                    /* for (String folderName : folderNames) {
                         folder = new File(getFilesDir(), folderName);
@@ -368,6 +367,8 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
         }
     }
     private void getActivityString(int activity) {
+        binding.containerStatus.setVisibility(View.VISIBLE);
+
         switch (activity) {
             case DetectedActivity.ON_BICYCLE:
                 binding.ivActivity.setImageResource(R.drawable.ic_run);
@@ -377,6 +378,7 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                 binding.tvStatus.setText("This place is suitable for bicycle activity");
             default:
                 binding.tvStatus.setText("");
+                binding.containerStatus.setVisibility(View.GONE);
         }
     }
 
@@ -423,6 +425,8 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                                             .setCallback(new FutureCallback<String>() {
                                                 @Override
                                                 public void onCompleted(Exception e, String result) {
+                                                    finish();
+
                                                     if (e != null){
                                                         Timber.e("ERROR UP : "+e.getMessage());
                                                         finish();

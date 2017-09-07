@@ -14,7 +14,7 @@ import org.greenrobot.greendao.annotation.Generated;
 
 
 @Entity(nameInDb = "GuideTbl")
-public class GuideTbl  implements Parcelable {
+public class    GuideTbl  implements Parcelable {
     @Id
     @Property(nameInDb = "GuideID")
     public Long GuideID;

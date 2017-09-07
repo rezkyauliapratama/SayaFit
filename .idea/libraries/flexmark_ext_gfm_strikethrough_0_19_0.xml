@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="flexmark-ext-gfm-strikethrough-0.19.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-gfm-strikethrough/0.19.0/18bd71874c723ba5c848a312ba4a9647c5979f63/flexmark-ext-gfm-strikethrough-0.19.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-gfm-strikethrough/0.19.0/983226e440cb8af3e4775d75e4692bdaaf63a7d/flexmark-ext-gfm-strikethrough-0.19.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

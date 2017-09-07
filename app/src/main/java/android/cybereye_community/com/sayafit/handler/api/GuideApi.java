@@ -18,8 +18,8 @@ import timber.log.Timber;
 
 public class GuideApi  {
     private final ApiClient api;
-    final  String path = Constant.getInstance().BASE_URL.concat("feed/");
-    final String getPath = path.concat("feed_item_v289967.php");
+    final  String path = Constant.getInstance().BASE_URL.concat("guide/");
+    final String getPath = path.concat("guide_item_v289967.php");
 
     public GuideApi(ApiClient api) {
         this.api = api;

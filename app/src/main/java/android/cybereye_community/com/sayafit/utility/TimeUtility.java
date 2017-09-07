@@ -161,7 +161,7 @@ public class TimeUtility {
     }
 
     public String getUserDateWithTimeString(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyy  hh:mm:ss a", Locale.getDefault());
+        SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyy  hh:mm:ss", Locale.getDefault());
 
         return format.format(date);
     }

@@ -84,7 +84,8 @@ dependencies {
     compile 'org.jetbrains:annotations-java5:15.0'
     compile 'com.android.support:support-v4:25.3.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    compile 'com.github.tiagohm.MarkdownView:library:0.16.0'
+
 
 }
 apply plugin: 'com.google.gms.google-services'

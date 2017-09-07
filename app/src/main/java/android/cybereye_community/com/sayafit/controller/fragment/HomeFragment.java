@@ -133,7 +133,7 @@ public class HomeFragment extends BaseFragment {
             }
         });
 
-        if(feeds == null)
+        if(feeds.size() == 0 )
             loadData();
 
         binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

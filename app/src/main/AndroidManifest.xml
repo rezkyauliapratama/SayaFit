@@ -35,6 +35,11 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateVisible|adjustResize|stateAlwaysHidden"
             android:screenOrientation="portrait"/>
+   <activity
+            android:name=".controller.activity.NewsletterActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize|stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.google.android.awareness.API_KEY"

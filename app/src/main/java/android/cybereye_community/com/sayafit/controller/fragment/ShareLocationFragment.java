@@ -116,28 +116,22 @@ public class ShareLocationFragment extends BaseFragment {
 
                                 List<PlaceLikelihood> placeLikelihood =
                                         placesResult.getPlaceLikelihoods();
-                                List<PlaceLikelihood> tempPlacelikehoods = new ArrayList<PlaceLikelihood>();
                                 if (placeLikelihood != null && !placeLikelihood.isEmpty()) {
                                     for (PlaceLikelihood likelihood : placeLikelihood) {
-                                        tempPlacelikehoods.add(likelihood);
 
                                         for (int i : likelihood.getPlace().getPlaceTypes()){
-                                            if (i == Place.TYPE_HEALTH || i == Place.TYPE_GYM || i == Place.TYPE_PHYSIOTHERAPIST || i == Place.TYPE_PARK){
+                                            if (i == Place.TYPE_HEALTH || i == Place.TYPE_GYM || i == Place.TYPE_PHYSIOTHERAPIST
+                                                    || i == Place.TYPE_PARK || i == Place.TYPE_CAFE || i == Place.TYPE_BUS_STATION
+                                                    || i == Place.TYPE_BICYCLE_STORE || i == Place.TYPE_FOOD || i == Place.TYPE_TRAIN_STATION
+                                                    || i == Place.TYPE_TAXI_STAND ){
                                                 addPlace(likelihood,i);
-                                                tempPlacelikehoods.remove(likelihood);
                                                 break;
                                             }
                                         }
 
                                     }
 
-                                    for (PlaceLikelihood likelihood : tempPlacelikehoods) {
 
-                                        for (int i : likelihood.getPlace().getPlaceTypes()){
-                                                addPlace(likelihood,-1);
-                                        }
-
-                                    }
                                 }
 
                                 binding.recyclerView.getAdapter().notifyDataSetChanged();

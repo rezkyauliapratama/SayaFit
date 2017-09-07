@@ -1,7 +1,9 @@
 package android.cybereye_community.com.sayafit.controller.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.cybereye_community.com.sayafit.R;
+import android.cybereye_community.com.sayafit.controller.activity.NewsletterActivity;
 import android.cybereye_community.com.sayafit.controller.database.Facade;
 import android.cybereye_community.com.sayafit.controller.database.entity.GuideTbl;
 import android.cybereye_community.com.sayafit.controller.database.entity.UserTbl;
@@ -48,18 +50,21 @@ public class GuideRecyclerviewAdapter extends BaseAdapter {
         }
     }
 
-    private void onMainBindViewHolder(GuideRecyclerviewAdapter.MainViewHolder holder, int position) {
-        GuideTbl item = mItems.get(position);
+    private void onMainBindViewHolder(final GuideRecyclerviewAdapter.MainViewHolder holder, int position) {
+        final GuideTbl item = mItems.get(position);
 
         UserTbl user = Facade.getInstance().getManageUserTbl().get();
         holder.binding.tvName.setText(item.getNm_category());
         holder.binding.tvTime.setText(item.getDate());
-        holder.binding.tvContent.setText(item.getKet());
+//        holder.binding.tvContent.setText(item.getKet());
+        holder.binding.tvContent.setVisibility(View.GONE);
 
         holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(mContext, NewsletterActivity.class);
+                intent.putExtra(NewsletterActivity.ID, item.GuideID);
+                mContext.startActivity(intent);
             }
         });
     }

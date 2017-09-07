@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:card_view="http://schemas.android.com/tools">
     <android.support.v7.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -56,11 +56,40 @@
                 android:layout_marginTop="@dimen/margin_small"
                 android:visibility="gone"/>
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardview_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardUseCompatPadding="true"
+                android:layout_margin="@dimen/margin_normal"
+                card_view:cardBackgroundColor="@android:color/transparent"
+                card_view:cardElevation="0dp"
+                android:backgroundTint="@color/colorAccentTransparent"
+                >
+                <LinearLayout
+                    android:id="@+id/layout_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margin_small"
+                    >
+
+                    <com.app.infideap.stylishwidget.view.ATextView
+                        android:id="@+id/textView_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorBlack_1000"
+                        android:textAppearance="@style/TextStyle.Medium" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
             <TextView
                 android:id="@+id/tv_content"
                 android:textAppearance="@style/TextStyle.Medium"
                 android:text="@string/text"
                 android:padding="@dimen/margin_normal"
+                android:layout_marginLeft="@dimen/margin_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/secondaryTextColor"/>

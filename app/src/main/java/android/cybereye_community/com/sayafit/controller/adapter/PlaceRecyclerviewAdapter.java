@@ -92,7 +92,6 @@ public class PlaceRecyclerviewAdapter extends RecyclerView.Adapter<PlaceRecycler
         setAnimation(holder.binding.getRoot(), position);
     }
 
-
     /**
      * Here is the key method to apply the animation
      */

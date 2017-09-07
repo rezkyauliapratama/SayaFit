@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="flexmark-ext-typographic-0.19.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-typographic/0.19.0/7fca1579d07f493ce20a91eaefc9905ebaa6796/flexmark-ext-typographic-0.19.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-typographic/0.19.0/2356b8387f4a9ac84e888838b1523153c78ef136/flexmark-ext-typographic-0.19.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

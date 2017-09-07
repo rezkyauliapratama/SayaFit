@@ -81,10 +81,8 @@ public class MainActivity extends BaseActivity
 
         initTab();
         initViewPager();
-
         initFab();
         listenerFab();
-
     }
 
 
@@ -124,8 +122,8 @@ public class MainActivity extends BaseActivity
         TabLayout.Tab[] tabs = {
                 binding.content.tabLayout.newTab().setIcon(R.drawable.ic_house_black_building_shape),
                 binding.content.tabLayout.newTab().setIcon(R.drawable.ic_favorite_place),
-                binding.content.tabLayout.newTab().setIcon(R.drawable.ic_calendar),
-                binding.content.tabLayout.newTab().setIcon(R.drawable.ic_stretching_exercises),
+                /*binding.content.tabLayout.newTab().setIcon(R.drawable.ic_calendar),
+                binding.content.tabLayout.newTab().setIcon(R.drawable.ic_stretching_exercises),*/
                 binding.content.tabLayout.newTab().setIcon(R.drawable.ic_icon),
         };
 
@@ -171,8 +169,8 @@ public class MainActivity extends BaseActivity
     private void initViewPager(){
         fragments.add(HomeFragment.newInstance());
         fragments.add(ShareLocationFragment.newInstance());
-        fragments.add(ScheduleFragment.newInstance());
-        fragments.add(new BaseFragment());
+        /*fragments.add(ScheduleFragment.newInstance());
+        fragments.add(new BaseFragment());*/
         fragments.add(GuideFragment.newInstance());
 
         fragment = fragments.get(0);

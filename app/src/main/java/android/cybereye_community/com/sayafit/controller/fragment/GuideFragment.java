@@ -167,9 +167,9 @@ public class GuideFragment extends BaseFragment {
         protected Void doInBackground(GuideApi.GetResponse... params) {
             if (params[0] != null){
                 if (params[0].ApiList.size() > 0){
-                    if (mPage == 1) {
+
                         guides.clear();
-                    }
+
                     int i=0;
                     for (GuideTbl item : params[0].ApiList){
                         long id = Facade.getInstance().getManageGuideTbl().add(item);
