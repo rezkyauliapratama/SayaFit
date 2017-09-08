@@ -9,6 +9,7 @@ import android.content.res.Resources;
 import android.cybereye_community.com.sayafit.R;
 import android.cybereye_community.com.sayafit.controller.database.Facade;
 import android.cybereye_community.com.sayafit.controller.database.entity.UserTbl;
+import android.cybereye_community.com.sayafit.controller.service.GPSTracker;
 import android.cybereye_community.com.sayafit.databinding.DialogPostFeedBinding;
 import android.cybereye_community.com.sayafit.handler.ApiClient;
 import android.cybereye_community.com.sayafit.model.request.FeedPost;
@@ -117,6 +118,23 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
 
         initCamera();
         initPost();
+
+
+        if (centerLatLng.longitude == 0 && centerLatLng.latitude == 0){
+            GPSTracker gps = new GPSTracker(this, new GPSTracker.OnLocationEventListener() {
+                @Override
+                public void onChange(GPSTracker gpsTracker, Location location) {
+                    if (location != null) {
+                        centerLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+                        relocate();
+
+                    }
+
+                    gpsTracker.stopUsingGPS();
+                }
+            });
+
+        }
     }
 
     private void setupGoogleApiClient() {

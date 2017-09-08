@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.cybereye_community.com.sayafit.R;
+import android.cybereye_community.com.sayafit.controller.service.GPSTracker;
 import android.cybereye_community.com.sayafit.model.DirectionObject;
 import android.cybereye_community.com.sayafit.model.LegsObject;
 import android.cybereye_community.com.sayafit.model.PolylineObject;
@@ -148,6 +149,23 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
 
         setupGoogleApiClient();
         getLocation();
+
+
+        if (centerLatLng.longitude == 0 && centerLatLng.latitude == 0){
+            GPSTracker gps = new GPSTracker(getContext(), new GPSTracker.OnLocationEventListener() {
+                @Override
+                public void onChange(GPSTracker gpsTracker, Location location) {
+                    if (location != null) {
+                        currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+                        locateMe();
+
+                    }
+
+                    gpsTracker.stopUsingGPS();
+                }
+            });
+
+        }
     }
 
     @Override
