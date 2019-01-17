@@ -15,8 +15,10 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import com.airbnb.lottie.L;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceLikelihood;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
 import java.util.List;
@@ -85,7 +87,7 @@ public class PlaceRecyclerviewAdapter extends RecyclerView.Adapter<PlaceRecycler
         holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.instanceOf().setObservable(item.latLng);
+                EventBus.getInstance().setObservable(item.latLng);
             }
         });
 

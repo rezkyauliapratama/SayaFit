@@ -6,12 +6,16 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.cybereye_community.com.sayafit.EventBus;
 import android.cybereye_community.com.sayafit.R;
 import android.cybereye_community.com.sayafit.controller.database.Facade;
+import android.cybereye_community.com.sayafit.controller.database.entity.FeedTbl;
 import android.cybereye_community.com.sayafit.controller.database.entity.UserTbl;
 import android.cybereye_community.com.sayafit.controller.service.GPSTracker;
+import android.cybereye_community.com.sayafit.controller.service.GpsService;
 import android.cybereye_community.com.sayafit.databinding.DialogPostFeedBinding;
 import android.cybereye_community.com.sayafit.handler.ApiClient;
+import android.cybereye_community.com.sayafit.model.GpsEvent;
 import android.cybereye_community.com.sayafit.model.request.FeedPost;
 import android.cybereye_community.com.sayafit.utility.Constant;
 import android.cybereye_community.com.sayafit.utility.Utils;
@@ -39,11 +43,15 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.androidnetworking.interfaces.UploadProgressListener;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.awareness.Awareness;
 import com.google.android.gms.awareness.snapshot.DetectedActivityResult;
 import com.google.android.gms.awareness.snapshot.LocationResult;
+import com.google.android.gms.awareness.snapshot.WeatherResult;
+import com.google.android.gms.awareness.state.Weather;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.ActivityRecognitionResult;
@@ -59,6 +67,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
+import com.google.gson.internal.ObjectConstructor;
 import com.infideap.atomic.Atom;
 import com.infideap.atomic.FutureCallback;
 import com.infideap.atomic.ProgressCallback;
@@ -73,6 +82,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
 
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 /**
@@ -100,6 +111,7 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
     DetectedActivity mostProbableActivity;
 
     private GoogleApiClient mGoogleApiClient;
+    Intent intent;
 
 
     @Override
@@ -107,9 +119,11 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.dialog_post_feed);
 
-        double latitude = 0;
+        final double latitude = 0;
         double longitude= 0;
         centerLatLng = new LatLng(latitude,longitude);
+
+        intent = new Intent(this,GpsService.class);
 
         initMap();
         setupGoogleApiClient();
@@ -121,18 +135,49 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
 
 
         if (centerLatLng.longitude == 0 && centerLatLng.latitude == 0){
-            GPSTracker gps = new GPSTracker(this, new GPSTracker.OnLocationEventListener() {
+            /*GPSTracker gps = new GPSTracker(this, new GPSTracker.OnLocationEventListener() {
                 @Override
                 public void onChange(GPSTracker gpsTracker, Location location) {
+                    gpsTracker.getLocation();
+                    Timber.e("GPS : "+new Gson().toJson(location));
                     if (location != null) {
                         centerLatLng = new LatLng(location.getLatitude(), location.getLongitude());
                         relocate();
 
                     }
 
-                    gpsTracker.stopUsingGPS();
+//                    gpsTracker.stopUsingGPS();
                 }
+            });*/
+
+
+            EventBus.getInstance().getObservable().observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Object>() {
+                @Override
+                public void onCompleted() {
+
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    Timber.e("ERR EVENT : "+e.getMessage());
+                }
+
+                @Override
+                public void onNext(Object object) {
+                    if (object instanceof GpsEvent){
+                        GpsEvent gpsEvent = (GpsEvent) object;
+                        Timber.e("GPS : "+new Gson().toJson(gpsEvent));
+                        centerLatLng = new LatLng(gpsEvent.getLatitude(), gpsEvent.getLongitude());
+                        relocate();
+                    }
+
+
+                }
+
+
+
             });
+
 
         }
     }
@@ -158,6 +203,18 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                 }
             }
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stopService(intent);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        startService(intent);
     }
 
     private void getLocation() {
@@ -265,6 +322,8 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
             try {
                 knownName = Utils.getInstance().setLocation(this,centerLatLng);
                 binding.textViewAddress.setText(knownName);
+                getWeather();
+                getWeatherApi(centerLatLng);
 
             } catch (IOException e) {
                 Timber.e(e.getMessage());
@@ -427,7 +486,6 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                                 Timber.e("RESPONSE :"+response);
                                 Toast.makeText(PostActivity.this,"Your post will we analyse",Toast.LENGTH_LONG).show();
                                 if (newFile != null){
-
                                     Atom.with(PostActivity.this)
                                             .load("http://sayafit.cybereye-community.com/upload/")
                                             .setMultipartFile("image", newFile)
@@ -497,5 +555,102 @@ public class PostActivity extends BaseActivity implements OnMapReadyCallback {
                         finish();
                     }
                 });
+    }
+
+    private void getWeather() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSION_REQUEST_ACCESS_FINE_LOCATION);
+        } else {
+            Awareness.SnapshotApi.getWeather(mGoogleApiClient)
+                    .setResultCallback(new ResultCallback<WeatherResult>() {
+                        @Override
+                        public void onResult(@NonNull WeatherResult weatherResult) {
+                            if (weatherResult.getStatus().isSuccess()) {
+                                Weather weather = weatherResult.getWeather();
+
+                                int[] conditions = weather.getConditions();
+                                StringBuilder stringBuilder = new StringBuilder();
+                                if (conditions.length > 0) {
+                                    for (int i = 0; i < conditions.length; i++) {
+                                        if (i > 0) {
+                                            stringBuilder.append(", ");
+                                        }
+                                        stringBuilder.append(retrieveConditionString(conditions[i]));
+
+                                    }
+                                }
+                                binding.textViewWeatherawereness.setText(getString(R.string.text_weather,
+                                        stringBuilder.toString()));
+
+                            } else {
+
+                            }
+                        }
+                    });
+        }
+    }
+
+    private void getWeatherApi(LatLng latLng){
+        Timber.e("MAP : api.openweathermap.org/data/2.5/weather?APPID=06006762123eca55ccd024b11ef88268&lat="+latLng.latitude+"&lon="+latLng.longitude+"");
+        AndroidNetworking.get("http://api.openweathermap.org/data/2.5/weather?APPID=06006762123eca55ccd024b11ef88268&lat="+latLng.latitude+"&lon="+latLng.longitude+"")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsObject(android.cybereye_community.com.sayafit.model.weather.Weather.class, new ParsedRequestListener<android.cybereye_community.com.sayafit.model.weather.Weather>() {
+                    @Override
+                    public void onResponse(android.cybereye_community.com.sayafit.model.weather.Weather response) {
+                        binding.textViewWeatherapi.setText(getString(R.string.text_conditions,
+                                response.getWeather().get(0).getMain()));
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Timber.e("ERR API : "+anError.getMessage());
+                    }
+                });
+
+      /*  Atom.with(this)
+                .load("http://api.openweathermap.org/data/2.5/weather?APPID=06006762123eca55ccd024b11ef88268&lat="+latLng.latitude+"&lon="+latLng.longitude+"")
+                .as(android.cybereye_community.com.sayafit.model.weather.Weather.class)
+                .setCallback(new FutureCallback<android.cybereye_community.com.sayafit.model.weather.Weather>() {
+                    @Override
+                    public void onCompleted(Exception e, android.cybereye_community.com.sayafit.model.weather.Weather result) {
+                        if (e != null){
+                            Timber.e("ERR API : "+e.getMessage());
+
+                        }
+
+                        binding.textViewAddress.append(getString(R.string.text_weather,
+                                result.getWeather().get(0).getMain()));
+                    }
+                });*/
+    }
+
+    private String retrieveConditionString(int condition) {
+        switch (condition) {
+            case Weather.CONDITION_CLEAR:
+                return getString(R.string.condition_clear);
+            case Weather.CONDITION_CLOUDY:
+                return getString(R.string.condition_cloudy);
+            case Weather.CONDITION_FOGGY:
+                return getString(R.string.condition_foggy);
+            case Weather.CONDITION_HAZY:
+                return getString(R.string.condition_hazy);
+            case Weather.CONDITION_ICY:
+                return getString(R.string.condition_icy);
+            case Weather.CONDITION_RAINY:
+                return getString(R.string.condition_rainy);
+            case Weather.CONDITION_SNOWY:
+                return getString(R.string.condition_snowy);
+            case Weather.CONDITION_STORMY:
+                return getString(R.string.condition_stormy);
+            case Weather.CONDITION_WINDY:
+                return getString(R.string.condition_windy);
+            default:
+                return getString(R.string.condition_unknown);
+        }
     }
 }

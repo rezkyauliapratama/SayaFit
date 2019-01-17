@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\a2425bacfc32defa0e432176794f34288823ee5c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="2a156b99fc7cc034308f942906b09d32754a4470">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7b79812447b95368e5f5f60fdf9cfef1d9ddee8e\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\6cdad7b63e3720876e21eaeeeb40c562122cdc0f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="7f2f348b830f292429db987f74ba3e67c6752322">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_f8d94f40b9f84a286dc9904b76c4e5d0c7f62e9e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\e50a055eb1a896158e330f1bada6016d65f5b065\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="68956f5ba1517b7a3d513ba540548e257741cbae">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_bb0f6db365107164265ea362ccc58161893bb7dd.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\37f01319c126feed09ca5d241857543a8668638c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d695dc4247690369d66c022c6d18190155c61fcd">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3ea2731ebe16996e0c5406229d78151a595cc6bb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\58a01f151fbd190e74b061af9c23caf5effaec70\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7752bb260ed163b3311ad71b579ab3b6a719064b\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark-ext-superscript\0.19.0\e6202dbaa24b1d14668caacdcc8f11c8718e963a\flexmark-ext-superscript-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e6202dbaa24b1d14668caacdcc8f11c8718e963a">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-ext-superscript-0.19.0_52c22f4684b4d7f18f817296c5785bbf2b73d529.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\4978c51e517e1995b490b9072e6d114e90ec22a0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_f9611682b7a5b2a67f52699484d99c6a6da307df.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark\0.19.0\1f22c51b92a60f570a6f3ae300c2e7bfd3863011\flexmark-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="1f22c51b92a60f570a6f3ae300c2e7bfd3863011">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-0.19.0_ea0f271657e3ef698ed3ed5f9a82a7d5bb68835c.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\9606f1041584b7ff893d7e63700f479afdff4847\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d237556caead5b93d97e18a071059a2c0045978e">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7e41d85489316e871843ecf7e39bf9dbea10550f\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\bc854bff44e21f9e25e0897bf18b55c6305dcfb5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6ee37f68676f80095b60f995cd00586e8478c505">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_ee0b8fb65bf5eb74551a49e22a0dd293ade56539.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\f6b0f9e89a6e9c2a2266de400e91f83849168a27\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6189e96ce5fefaab0930a8bfa415595e982477ea">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_5a25e128577bd52e251f35a5e719445c8b030cab.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\41a2677abad3ac5fac35eab3f193dba33b32a956\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="ec224ad624f39212bacaf5903d989fe066166e7a">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ddc4a9e787d977bfd5de266ab731e5954aac909f\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark-ext-autolink\0.19.0\6eb01a887d895c703f2257dc3f2a46b7c4ce20b1\flexmark-ext-autolink-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6eb01a887d895c703f2257dc3f2a46b7c4ce20b1">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-ext-autolink-0.19.0_b0eec34d812c79433bb7991d8686681b5e6d6203.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\23ca4f1a6582f678c3716078d619b658eb981e64\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="90095b555b72205db6f9b93aca3cb9978d1e3344">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f2ee1bad1e0b37e054036d10d6a4c66a95cdb5b2\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.android.databinding\baseLibrary\2.3.3\eb3399988a52099b0127e27fb5bed666eca86ace\baseLibrary-2.3.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="eb3399988a52099b0127e27fb5bed666eca86ace">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\baseLibrary-2.3.3_9183143a541e429174d332aafdbd8054099ebed8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\b643c19b14ddee773cb8215367b27dea5eff775b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_48e254f8f8c63a2b1aa9a5c915ef6896027ce687.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\8ef3fee69ab3661bdb27d54b0dd95169421028da\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="afb956e857c0c14812600bacb43ec52b2e1f9a15">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_b35118ccf98fd2a1514d5121fa365cce70777b11.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\3d01c4b5fd387dbdbbae0587598ecc14fb4261ac\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d4ba7399a1a4f5c998b5ce4f6bf33a2e8347820c">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1eed2616d34b2b4c8dbcb8b7e554f23c555a0566\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\ec2896d9f597677f1a19997b3174f12d7e9c7439\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="7057b89327260d70337f4913f933c78bb56ecd69">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fb72a2ee134c909f7f5d2ce69b26a2aeac799f85\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark-ext-typographic\0.19.0\7fca1579d07f493ce20a91eaefc9905ebaa6796\flexmark-ext-typographic-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="07fca1579d07f493ce20a91eaefc9905ebaa6796">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-ext-typographic-0.19.0_791c1ef53cfe87670b2363e1b814111f1d9f65ea.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\32d51f3543f12ca4c4b8d61e51b47834dfde4d4b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="076ea500db17d23f683d15f331f8704530d0b4bb">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_fa55f29e9f956e5cf5fa68640f7a7fcb4ef24abf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\5203e33379ebf9fc8aaaed5471d3861641910a0b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e171feee9cd68762880f92502e3f900d58a378ff">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_b83507d6709aaeb722b638a28bf90ac91ed33a31.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\d0413dfeee6941b6d7e7f4e4dd046a820d935b01\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c59c0f2d17a81a4b60c09388dfaf17c16a17f574">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_549173c6d583bec549a860c88765e5191906dc72\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\9a89e1fe2a9aa7e51abfcfab2eb5519d10f50b59\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="afb956e857c0c14812600bacb43ec52b2e1f9a15">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_88c45d5bf9b914febd06795ec24733df0dce0485\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\48dfb51bb4361e4e70c1b82caa4c35ede48006c1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="4b70c5ad05857b8b3b2458777e1b489a96d82f05">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_62b86a92df3cecf721d0d6d4cc68f6efa982c54e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\5cc07dc17660e3896d26a390af67577fcf1dfcf9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_b39abba6434bf4f894abcb345fae919ff51de425.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\67a86ca4830e6165302fb0e0644ee6e7f88d651a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_b5c8138a584629a2c0385d4eedb21db75ff8cd60.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\7c5a9ddb0ef7fa7daf086f3562aec8e9abdfe3bb\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3e607ca6e04e85741fa979402b37eb552b811641">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_cb320778650f8550f07da16c7f72459b0a499222.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\ecce00c347bdf59d5ab752e327fb47ac5690b411\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_7d8979652dcc03e6c1fd44aac7cafd255b64e789.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="45b3373b7e7b71798a96d8470e48649341130e7d">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_22cb692066560d3e351e6f7820592d45aed569f9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\1b094c20d0098c6127013408a96208c171da1836\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c74c28a44292b6480afe69ddb2c0974f45393a3a">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_50535b8b576210a6d29e7f9ca887fd5f5c1bf18d\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\b00aa984da3f67419abeca4c9f26a1db472c71e8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="379a48c2da13ffb7ec7134f2c715663834357670">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_5f248419ef3ae2969c9b2fe37bacced69e2c03bd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\org.nibor.autolink\autolink\0.6.0\3986d016a14e8c81afeec752f19af29b20e8367b\autolink-0.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3986d016a14e8c81afeec752f19af29b20e8367b">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\autolink-0.6.0_ce967cd4878efbfa7dd093778da9178c804ded0d.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\79c6a68aba5b714d23529d22bd92f76d97cfa3db\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="8e5edad98e4113971e515a8d9fe89d6f95235fa9">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7687b7e3efc4ecc49a3db3821d419cff96a341ff\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\52b5eb96e58cb03f57806daa2f93c236d3f135a0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="47dc93d87f88e62e55c13196b35e8907d98ef660">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_ac6613441c9086489bf63c467bdfb7c810cc6957.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\840f293fd370889a05a9d2f5398a4141b9c9267c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_e7724d9727dc410c1206d38080957a91d265e256.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark-ext-footnotes\0.19.0\d2171a868334cd9e3023c049a162a4211ad32d28\flexmark-ext-footnotes-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d2171a868334cd9e3023c049a162a4211ad32d28">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-ext-footnotes-0.19.0_cc5b7db0e2786493f6eddf6dcfef3ce3c3986ef7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\bcbba405d0acf3afe4fa2b2fd3868d341b911011\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6178e31397c24ab1bfc09766832cdcf519621eb7">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_78d4d70172a598f84e930d469fe94bca5d9a1a04.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\426445d77fcfa88918b13da1bd152a89c28d0b7e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="95955cf3055a3384ba1bfc30c6da82b92df74e0a">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_c00fff979df210ef8d6189bf5eb93097ef9d0c86.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\05e416f01782c83671f6f05f4c52a8332eb04bfe\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c74c28a44292b6480afe69ddb2c0974f45393a3a">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_594bc2c7d391907d0b9d2ac9112ecaac72340684.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\cf6ce76a942bed4cec39edddb08cc8219bc931bd\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="5bd38c72db0a3b4140d38b7fb527e78e46126d79">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_2438a90a6223ea1d7558f719fc0be9c91fbad0c4.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\d62b3f74268812faa3882dec07c22f05bb3a3b68\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e171feee9cd68762880f92502e3f900d58a378ff">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_633410a0601a53e445a662b8a525b9bed503ffec\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\350ad121be3e10798fa6074044be2eed2660e466\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6ee37f68676f80095b60f995cd00586e8478c505">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b851ae59af967bb3ce02480eb2dca2b7e4773512\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\dbff6d8644a27404bd24f25884197c19ce184daa\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="549238d2484b8c2dc849f0c2f6b7ca9506fead4e">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9b9efe2f17a8cdaed941420a9e2eb20c50c18813\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\e317d69f5f58a5112fdb90bb97a15963d81a7c31\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6189e96ce5fefaab0930a8bfa415595e982477ea">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2adda6bac8aad15d650c368d72dfe13955e13ffc\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\58a01f151fbd190e74b061af9c23caf5effaec70\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_7752bb260ed163b3311ad71b579ab3b6a719064b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\d485566375a85157082e2a4fc6fbcd54d48e6e3d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="21160c044ba984fb2e33b833c89a496becb85cfd">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_3cfb9b4897fcc32426c855b73a0ac92033f8b8aa.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\46f29a63d891ca23ab6fed769b1de0e21b3dea77\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="0778b635a29c162f2ac3646a856f570529bad6c2">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7071f316735ab180f537185309d55b5018d0aa66\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\cef77b8c0266ad6aa680741fd41a16e40927ccfb\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_01d801e126d2dcc1b60ef3c61bb58d1080d3b50b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark-util\0.19.0\1c029e6a653bebb39288bceac56e9d03510cfe02\flexmark-util-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="1c029e6a653bebb39288bceac56e9d03510cfe02">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-util-0.19.0_a17ae567a6bb6a5c5a6a4525e8f11a3d09fa6089.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\2e69ab4aa9aab4e2e86bc2e0d40af4a3957bc4e2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="549238d2484b8c2dc849f0c2f6b7ca9506fead4e">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_a41fed8612e85d0569f1eb2d23d60f0fdcc0fd2d.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\ed2de353c58418806798f07acc77f2abe657aef2\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="47dc93d87f88e62e55c13196b35e8907d98ef660">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cc3a2e0a6b55c2ffa3fc17bc2baddae052bbafaf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\ccbdcea537f2c68987a5a371a7fb12f34ec833b2\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="040ab90bb0bcef628ac37fe432e813b70fe573db">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9986a41d809b7336f869a4f9ed37ccc1c0a7fc77\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\37f384b732446a623103f394bea389be48a07aa3\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="076ea500db17d23f683d15f331f8704530d0b4bb">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2d8ecf513a8e8faaee34db8884fbb9347e7e3931\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\dea104f008303b177d7dc3bc35cdadae9cd5d89e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="f229aae65e61058c88acb3ad14978b8997c77608">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_fba1de041fa6dd8f002bc7087d778993dfb4a7b4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\3484f2c35e22320982549f8a4d36b1db179342f4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c59c0f2d17a81a4b60c09388dfaf17c16a17f574">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_cb4406efb98341c0e78cddf9363307ea03cc79b0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\b25f8fefa0bedfd100bcf42b3411e3c9d6bf0786\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="32054268e6c9fdff0c9c5deafafd0bd105120fb6">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_9ce22507143d67cfb772061ef10f261c8e61097d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\ee4d0cb06053ba42c153490e1d245954d8b091e3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_8717dfff2944f164faaf370981419ec37b2b7762.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\567b2e7451e8b10b03db4e55189e32309913d8b8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="76f1e5943cb1fc1a841880ed72af680cba8a046c">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c8f5e11aa40bb3d28b698a462d2ac6ae04e6e89a\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark-ext-gfm-tasklist\0.19.0\b10301cc3b896002aa7b51f53dc36f0897e152e1\flexmark-ext-gfm-tasklist-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="b10301cc3b896002aa7b51f53dc36f0897e152e1">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-ext-gfm-tasklist-0.19.0_7e374b646f4b572d877d0b4ad83958a6a2db1bd9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark-ext-tables\0.19.0\c4e2ab29cc5cfe5c68f20365ddc7836ec95647fe\flexmark-ext-tables-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="c4e2ab29cc5cfe5c68f20365ddc7836ec95647fe">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-ext-tables-0.19.0_916a89ab1727e5c312972e992aaceef90c095625.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\aea8b3d3448ff93f98bb428beca430d8856cd258\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d237556caead5b93d97e18a071059a2c0045978e">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_3a1686078a3cf53bf1e96df51b8468f4ae437539.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\3d01c4b5fd387dbdbbae0587598ecc14fb4261ac\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d4ba7399a1a4f5c998b5ce4f6bf33a2e8347820c">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_1eed2616d34b2b4c8dbcb8b7e554f23c555a0566.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\f0928079da95c8f5a71068987597bc5a41364d00\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="e00b71dcf2fbecaf59b0d487d11839522dd7863d">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_f6f378a84157ad0d484c0017a44c8f1a551b6095.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\ac5cee783cf62d8e7f3d7a9e83d8fc6b50dfa4e2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="040ab90bb0bcef628ac37fe432e813b70fe573db">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_a0a32bf56f8a740e3c799b511ee438daa38d61a6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\23ca4f1a6582f678c3716078d619b658eb981e64\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="90095b555b72205db6f9b93aca3cb9978d1e3344">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_f2ee1bad1e0b37e054036d10d6a4c66a95cdb5b2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\1ed2e4dcd5974d4ef89673c81172809ece3ce241\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="54511008bf7d1aabd871d8d3a26781b3f2bd9617">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_8432f7c465e652861a9a6211bf067e99f514ecde.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\a743801aebac402f26f7057c1820d0f3935fc482\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_c2a9f6cfd7a066c271ad7495019cc90a3efc372a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\ec2896d9f597677f1a19997b3174f12d7e9c7439\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="7057b89327260d70337f4913f933c78bb56ecd69">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_fb72a2ee134c909f7f5d2ce69b26a2aeac799f85.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\9ae1e664b09cc1f39a20c903fd63b57a1c215b89\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d4acacbab67243d9eb026ea759aefd401d070f3e">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_bb646e84426968c1cdadab4dd2684f5da26e4689.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\37f01319c126feed09ca5d241857543a8668638c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d695dc4247690369d66c022c6d18190155c61fcd">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_3ea2731ebe16996e0c5406229d78151a595cc6bb.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\fa518a39b3854ae863a38efadf74b53931dff9b9\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="927e8ef5711b115b65b2f35495d77352be2b3c09">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_35955610948dc5c91829fab031a6a4f60d86ae2f\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark-formatter\0.19.0\87657b5b31f9f89ba0c7cd29fdd5cbf391a83bd\flexmark-formatter-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="087657b5b31f9f89ba0c7cd29fdd5cbf391a83bd">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-formatter-0.19.0_c64f760bf9cc22d818fd6fdac4d1103c7d4e05db.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\48dfb51bb4361e4e70c1b82caa4c35ede48006c1\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="4b70c5ad05857b8b3b2458777e1b489a96d82f05">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_62b86a92df3cecf721d0d6d4cc68f6efa982c54e\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\3012c47db76852ed1a5ce64593097a4caacd5790\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="0778b635a29c162f2ac3646a856f570529bad6c2">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_d52bf82af782d26f29649b1136784f6b0509aed2.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\7c5a9ddb0ef7fa7daf086f3562aec8e9abdfe3bb\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3e607ca6e04e85741fa979402b37eb552b811641">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cb320778650f8550f07da16c7f72459b0a499222\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\a79f61cf30d8546e0efb7a4279740f70bdcbe97f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="2a156b99fc7cc034308f942906b09d32754a4470">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_51b664b6b0fddc4fd1887f0938c59d30757ba664.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\e6fc97df5518708f0b196ffd02f949ed1510f33d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="ec224ad624f39212bacaf5903d989fe066166e7a">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_f1cd4ef0331a202688e8b3ba5ff9f84abe2933f5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark-ext-abbreviation\0.19.0\7fecf12c01547ea7917a3533e2c7a339ea6219c2\flexmark-ext-abbreviation-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="7fecf12c01547ea7917a3533e2c7a339ea6219c2">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-ext-abbreviation-0.19.0_9d7098dcd4874cda8ae9afb91df71fb271749ca8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\6a6bd7523ad593eb8f024ff882d535e4415b1827\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_24fbcc9ba41d7d1ade64e0c025fe2f997a739476.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\567b2e7451e8b10b03db4e55189e32309913d8b8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="76f1e5943cb1fc1a841880ed72af680cba8a046c">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_c8f5e11aa40bb3d28b698a462d2ac6ae04e6e89a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\08dc09ab867583f574c8800212c7908e2bf9f99f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_6d240f550786d23456e05ebd70b974b4d6b4cac3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\028ad82adb7b0425c15f78faca0583ea0a2b2428\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="927e8ef5711b115b65b2f35495d77352be2b3c09">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_4e130d8a1f805c417de0901327c2a8c56b6a0d86.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\896e789af4337137be0ed93bdb3e9bc8b9b5d67e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_bf786ceb7a36bd6dfa4397aab05cc28ab70e304f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\79c6a68aba5b714d23529d22bd92f76d97cfa3db\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="8e5edad98e4113971e515a8d9fe89d6f95235fa9">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_7687b7e3efc4ecc49a3db3821d419cff96a341ff.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_11812a10c268bebf5c3625b5c8e8aebe222c3fea\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Rezky Aulia Pratama\.gradle\caches\modules-2\files-2.1\com.vladsch.flexmark\flexmark-ext-gfm-strikethrough\0.19.0\18bd71874c723ba5c848a312ba4a9647c5979f63\flexmark-ext-gfm-strikethrough-0.19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="18bd71874c723ba5c848a312ba4a9647c5979f63">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\flexmark-ext-gfm-strikethrough-0.19.0_f9e3d98a6b7e3efd84a7391e5f311951b9049aa8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\1.ANDROID\.android\build-cache\735047c0aad42bff144a4d769142a7ed8d9146b3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\pre-dexed\debug\classes_05d55b600ffbe966be418d64038d79ac0b0fe91b.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\ba37e0ba5cc339223d5cbe9212c7c747756508f9\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="f229aae65e61058c88acb3ad14978b8997c77608">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3172de7a07a44e694644bdf31edf0331d393a4b7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\1.ANDROID\.android\build-cache\426445d77fcfa88918b13da1bd152a89c28d0b7e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="95955cf3055a3384ba1bfc30c6da82b92df74e0a">
+        <dex dex="D:\1.ANDROID\3.WORKSPACE\SayaFit\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c00fff979df210ef8d6189bf5eb93097ef9d0c86\classes.dex" />
+    </item>
+
+</items>

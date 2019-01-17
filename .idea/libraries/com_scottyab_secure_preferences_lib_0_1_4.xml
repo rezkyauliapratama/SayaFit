@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.scottyab:secure-preferences-lib-0.1.4">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../.android/build-cache/d62b3f74268812faa3882dec07c22f05bb3a3b68/output/res" />
+      <root url="jar://$PROJECT_DIR$/../../.android/build-cache/d62b3f74268812faa3882dec07c22f05bb3a3b68/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scottyab/secure-preferences-lib/0.1.4/46969c85e26d5a067a247b8b295fc66774858f98/secure-preferences-lib-0.1.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

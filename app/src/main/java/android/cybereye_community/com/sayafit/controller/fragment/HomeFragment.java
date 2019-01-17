@@ -102,7 +102,7 @@ public class HomeFragment extends BaseFragment {
         adapter = new FeedRecyclerviewAdapter(getContext(),feeds);
         binding.recyclerView.setAdapter(adapter);
 
-        EventBus.instanceOf().getObservable().subscribe(new Observer<FeedTbl>() {
+        EventBus.getInstance().getObservable().subscribe(new Observer<FeedTbl>() {
             @Override
             public void onCompleted() {
 

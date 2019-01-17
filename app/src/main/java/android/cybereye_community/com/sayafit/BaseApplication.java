@@ -24,7 +24,6 @@ public class BaseApplication extends Application {
         super.onCreate();
 
         //Initialize lib
-        EventBus.instanceOf();
         Timber.plant(new Timber.DebugTree());
         PreferencesManager.init(this);
 

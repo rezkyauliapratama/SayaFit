@@ -33,6 +33,8 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceLikelihood;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.gson.Gson;
+import com.google.gson.internal.ObjectConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -153,7 +155,7 @@ public class ShareLocationFragment extends BaseFragment {
         setupGoogleApiClient();
         getPlaces();
 
-        EventBus.instanceOf().getObservable().subscribe(new Observer<LatLng>() {
+        EventBus.getInstance().getObservable().subscribe(new Observer<Object>() {
             @Override
             public void onCompleted() {
 
@@ -161,12 +163,17 @@ public class ShareLocationFragment extends BaseFragment {
 
             @Override
             public void onError(Throwable e) {
-
+                Timber.e("ERROR EVENT : "+e.getMessage());
             }
 
             @Override
-            public void onNext(LatLng latLng) {
-                showDialogFragment(latLng);
+            public void onNext(Object object) {
+                if (object instanceof LatLng){
+                    LatLng latLng = (LatLng) object;
+                    Timber.e("EVENT LATLNG : "+new Gson().toJson(latLng));
+                    showDialogFragment(latLng);
+                }
+
             }
 
 

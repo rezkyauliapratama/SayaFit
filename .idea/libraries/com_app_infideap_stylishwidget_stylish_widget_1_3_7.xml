@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.app.infideap.stylishwidget:stylish-widget-1.3.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../.android/build-cache/ed2de353c58418806798f07acc77f2abe657aef2/output/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../.android/build-cache/ed2de353c58418806798f07acc77f2abe657aef2/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.app.infideap.stylishwidget/stylish-widget/1.3.7/b6bde1b95340155fa11240d150751a8f2dd0322c/stylish-widget-1.3.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.infideap.atomic:atomic-0.0.2">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../.android/build-cache/9a89e1fe2a9aa7e51abfcfab2eb5519d10f50b59/output/res" />
+      <root url="jar://$PROJECT_DIR$/../../.android/build-cache/9a89e1fe2a9aa7e51abfcfab2eb5519d10f50b59/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.infideap.atomic/atomic/0.0.2/3e69bd9a746bf5493f6b2c41b0f5c523ff3783e1/atomic-0.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="com.vladsch.flexmark:flexmark-ext-superscript:0.19.0@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-superscript/0.19.0/e6202dbaa24b1d14668caacdcc8f11c8718e963a/flexmark-ext-superscript-0.19.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-superscript/0.19.0/1c0047235b0c56c983e7b23a40ac2e19e0a913ac/flexmark-ext-superscript-0.19.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

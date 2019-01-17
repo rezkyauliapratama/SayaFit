@@ -28,4 +28,17 @@
     <string name="logout_confirmation">Are you sure ?</string>
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
+
+    <string name="condition_unknown">Unknown</string>
+    <string name="condition_clear">Clear</string>
+    <string name="condition_cloudy">Cloudy</string>
+    <string name="condition_foggy">Foggy</string>
+    <string name="condition_hazy">Hazy</string>
+    <string name="condition_icy">Icy</string>
+    <string name="condition_rainy">Rainy</string>
+    <string name="condition_snowy">Snowy</string>
+    <string name="condition_stormy">Stormy</string>
+    <string name="condition_windy">Windy</string>
+    <string name="text_conditions">OpenWeatherApi weather: %s</string>
+    <string name="text_weather">Awereness weather: %s</string>
 </resources>
